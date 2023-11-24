@@ -1,0 +1,29 @@
+name: Close Issue on accepted pull request
+
+run-name: ${{ github.actor }} has accepted a PR, the branch $ISSUE_NUMBER-$ISSUE_TITLE will be merged and the related issue will be closed 🚀
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  close-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Close Issue
+        run: |
+          git checkout main
+          git pull origin main
+          git merge --no-ff "$ISSUE_NUMBER-$ISSUE_TITLE"
+          git push origin main
+          ISSUE_NUMBER=$(jq -r ".pull_request.head.ref" $GITHUB_EVENT_PATH | cut -d'-' -f2)
+          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -d '{"state":"closed"}' \
+               "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
