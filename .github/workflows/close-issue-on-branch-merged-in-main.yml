@@ -19,9 +19,6 @@ jobs:
       - name: Close Issue
         run: |
           ISSUE_NUMBER=$(jq -r ".pull_request.head.ref" $GITHUB_EVENT_PATH | cut -d'-' -f1)
-          echo "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}"
-          echo "token : ${GITHUB_TOKEN}"
-          echo "other : ${{ secrets.GITHUB_TOKEN }}"
           curl -L \
             -X PATCH \
             -H "Accept: application/vnd.github+json" \
@@ -30,5 +27,16 @@ jobs:
             -d '{"state":"closed"}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  
+  delete-branch:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Delete Branch
+        run: |
+          BRANCH_NAME=$(echo ${{ github.event.pull_request.head.ref }})
+          git branch -d $BRANCH_NAME
+          git push origin --delete $BRANCH_NAME
 
