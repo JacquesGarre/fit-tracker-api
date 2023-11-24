@@ -8,12 +8,10 @@ on:
 jobs:
   close-issue:
     runs-on: ubuntu-latest
-    container:
-      image: node:16
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Close Issue
         run: |
@@ -31,12 +29,10 @@ jobs:
 
   delete-branch:
     runs-on: ubuntu-latest
-    container:
-      image: node:16
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Delete Branch
         run: |

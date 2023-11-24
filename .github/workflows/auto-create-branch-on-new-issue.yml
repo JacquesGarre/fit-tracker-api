@@ -4,17 +4,15 @@ on:
   issues:
     types:
       - opened
-      - moved
 
 jobs:
   create-branch:
     runs-on: ubuntu-latest
-    container:
-      image: node:16
-
+    env:
+      CI: true
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Create Branch
         run: |
