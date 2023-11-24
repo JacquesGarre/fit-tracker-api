@@ -17,11 +17,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Debug Information
         run: |
-          ISSUE_NUMBER=$(jq -r ".pull_request.head.ref" $GITHUB_EVENT_PATH | cut -d'-' -f2)
+          ISSUE_NUMBER=$(jq -r ".pull_request.head.ref" $GITHUB_EVENT_PATH | cut -d'-' -f1)
           echo "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}     "
-          echo "https://api.github.com/repos/${{ github.repository_owner }}/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}    "
-
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Close Issue
