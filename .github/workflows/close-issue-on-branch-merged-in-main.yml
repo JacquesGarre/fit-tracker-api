@@ -21,6 +21,7 @@ jobs:
         run: |
           ISSUE_NUMBER=$(jq -r ".pull_request.head.ref" $GITHUB_EVENT_PATH | cut -d'-' -f1)
           echo "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}"
+          echo "token : ${GITHUB_TOKEN}"
           curl -L \
             -X PATCH \
             -H "Accept: application/vnd.github+json" \
