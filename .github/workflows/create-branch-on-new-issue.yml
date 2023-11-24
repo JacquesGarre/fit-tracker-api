@@ -15,13 +15,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Debug Information
-        run: |
-          git status
-          git branch
-          git remote -v
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Branch
         run: |
           ISSUE_NUMBER=$(jq -r ".issue.number" $GITHUB_EVENT_PATH)
