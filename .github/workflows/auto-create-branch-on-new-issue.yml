@@ -1,0 +1,22 @@
+name: Auto Branch Creation
+
+on:
+  issues:
+    types:
+      - opened
+      - moved
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Create Branch
+        run: |
+          ISSUE_NUMBER=$(jq -r ".issue.number" $GITHUB_EVENT_PATH)
+          ISSUE_TITLE=$(jq -r ".issue.title" $GITHUB_EVENT_PATH)
+          git checkout -b "$ISSUE_NUMBER-$ISSUE_TITLE"
+          git push origin "$ISSUE_NUMBER-$ISSUE_TITLE"

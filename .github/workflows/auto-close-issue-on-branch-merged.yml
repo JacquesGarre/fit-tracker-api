@@ -1,0 +1,41 @@
+name: Auto Close Issue on Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  close-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Close Issue
+        run: |
+          git checkout main
+          git pull origin main
+          git merge --no-ff "$ISSUE_NUMBER-$ISSUE_TITLE"
+          git push origin main
+          ISSUE_NUMBER=$(jq -r ".pull_request.head.ref" $GITHUB_EVENT_PATH | cut -d'-' -f2)
+          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -d '{"state":"closed"}' \
+               "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}"
+
+
+               name: Auto Delete Branch on Merge
+
+  delete-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Delete Branch
+        run: |
+          BRANCH_NAME=$(echo ${{ github.event.pull_request.head.ref }})
+          git branch -d $BRANCH_NAME
+          git push origin --delete $BRANCH_NAME
