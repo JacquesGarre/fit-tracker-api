@@ -9,6 +9,8 @@ on:
 jobs:
   create-branch:
     runs-on: ubuntu-latest
+    container:
+      image: node:16
 
     steps:
       - name: Checkout Repository

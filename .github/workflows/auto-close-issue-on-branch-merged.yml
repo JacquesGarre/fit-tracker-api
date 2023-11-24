@@ -8,6 +8,8 @@ on:
 jobs:
   close-issue:
     runs-on: ubuntu-latest
+    container:
+      image: node:16
 
     steps:
       - name: Checkout Repository
@@ -29,6 +31,8 @@ jobs:
 
   delete-branch:
     runs-on: ubuntu-latest
+    container:
+      image: node:16
 
     steps:
       - name: Checkout Repository
