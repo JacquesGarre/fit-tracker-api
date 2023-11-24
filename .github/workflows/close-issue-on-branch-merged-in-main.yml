@@ -1,6 +1,6 @@
 name: Close Issue on accepted pull request
 
-run-name: ${{ github.actor }} has accepted a PR, the branch $ISSUE_NUMBER-$ISSUE_TITLE will be merged and the related issue will be closed 🚀
+run-name: ${{ github.actor }} has accepted a PR, the related issue will be closed 🚀
 
 on:
   pull_request:
