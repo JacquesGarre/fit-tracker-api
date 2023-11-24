@@ -21,7 +21,7 @@ jobs:
         run: |
           ISSUE_NUMBER=$(jq -r ".pull_request.head.ref" $GITHUB_EVENT_PATH | cut -d'-' -f1)
           echo "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}"
-          curl -u $GITHUB_TOKEN:x-oauth-basic "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}" -d '{"state":"closed"}'
+          curl -H "Authorization: Bearer ${GITHUB_TOKEN}" -u "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}" -d '{"state":"closed"}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
