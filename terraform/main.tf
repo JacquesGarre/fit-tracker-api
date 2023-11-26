@@ -41,4 +41,13 @@ resource "docker_container" "mysql" {
     "MYSQL_USER=${var.mysql_user}",
     "MYSQL_DATABASE=${var.mysql_database}"
   ]
+  volumes {
+    volume_name    = docker_volume.mysql_data_volume.name
+    container_path = "/var/lib/mysql"
+  }
+}
+
+# MySQL Volume
+resource "docker_volume" "mysql_data_volume" {
+  name = "mysql_data_volume"
 }
