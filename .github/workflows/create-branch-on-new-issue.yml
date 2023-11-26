@@ -19,7 +19,8 @@ jobs:
         run: |
           ISSUE_NUMBER=$(jq -r ".issue.number" $GITHUB_EVENT_PATH)
           ISSUE_TITLE=$(jq -r ".issue.title" $GITHUB_EVENT_PATH)
-          BRANCH_NAME="$ISSUE_NUMBER-$ISSUE_TITLE"
+          SLUGIFIED_TITLE=$(echo "$ISSUE_TITLE" | tr ' ' '-' | awk '{print tolower($0)}')
+          BRANCH_NAME="$ISSUE_NUMBER-$SLUGIFIED_TITLE"
           echo "Branch $BRANCH_NAME will be automatically created"
           git checkout -b "$BRANCH_NAME"
           git push origin "$BRANCH_NAME"
