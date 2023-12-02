@@ -71,7 +71,7 @@
             "@start"
         ],
         "test:architecture": "php vendor/bin/phpstan analyse -c tests/config/phpstan.neon --level 6",
-        "test:unit": "php bin/phpunit"
+        "test:unit": "php bin/phpunit tests/Unit"
     },
     "conflict": {
         "symfony/symfony": "*"
