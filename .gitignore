@@ -1,21 +1,10 @@
-#########################################
-################ TERRAFORM ##############
-#########################################
-
-# Ignore Terraform state files
-terraform/*.tfstate
-terraform/*.tfstate.backup
-terraform/*.tfplan
-
-# Ignore .terraform directory
-terraform/.terraform/
-
-# Ignore any local override files
-terraform/override.tf
-terraform/override.tf.json
-terraform/*_override.tf
-terraform/*_override.tf.json
-
-# Ignore CLI configuration files
-terraform/.terraformrc
-terraform/terraform.rc
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+.env
