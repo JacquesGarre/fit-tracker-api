@@ -15,6 +15,13 @@
 - Access the app at localhost:8000
 - Access phpmyadmin at localhost:8080 with user root (no pwd)
 
+## Commands
+
+- composer start // Starts the containers
+- composer stop // Stops the containers
+- composer enter // Enters the containers
+- composer restart // Restarts the containers
+
 ## Workflow
 
 - A branch gets automatically created in the repo for each new issue created
