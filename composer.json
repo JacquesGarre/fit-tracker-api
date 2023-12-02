@@ -70,8 +70,14 @@
             "@stop",
             "@start"
         ],
-        "test:architecture": "php vendor/bin/phpstan analyse -c tests/config/phpstan.neon --level 6",
-        "test:unit": "php bin/phpunit tests/Unit"
+        "test:architecture": "php vendor/bin/phpstan analyse -c tests/phpstan.neon --level 6",
+        "test:unit": "php bin/phpunit tests/Unit",
+        "test:integration": "php bin/phpunit tests/Integration",
+        "test": [
+            "@test:architecture",
+            "@test:unit",
+            "@test:integration"
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"

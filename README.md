@@ -8,6 +8,7 @@
 
 - git clone
 - cd fit-tracker-api
+- composer install
 - composer start
 
 ## Local Environment
@@ -21,6 +22,10 @@
 - composer stop // Stops the containers
 - composer enter // Enters the containers
 - composer restart // Restarts the containers
+- composer test // Runs unit, integration and architecture tests
+- composer test:unit // Runs unit tests
+- composer test:integration // Runs integration tests
+- composer test:architecture // Runs architecture tests
 
 ## Workflow
 
