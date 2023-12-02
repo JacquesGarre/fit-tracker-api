@@ -54,7 +54,10 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "start": "docker compose up -d",
+        "stop": "docker stop fit-tracker-phpmyadmin && docker stop fit-tracker-db && docker stop fit-tracker-php",
+        "enter": "docker exec -it fit-tracker-php bash"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -62,7 +65,8 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.0.*"
+            "require": "7.0.*",
+            "docker": true
         }
     }
 }
