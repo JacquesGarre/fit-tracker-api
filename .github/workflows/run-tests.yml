@@ -41,5 +41,6 @@ jobs:
     steps:              
       - uses: insightsengineering/coverage-action@v2.4.1
         with:
+          path: tests/Coverage
           threshold: 100
           fail: true
