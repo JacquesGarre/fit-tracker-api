@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 services:
     # Mysql database container
     db:
@@ -27,7 +27,7 @@ services:
             - fit-tracker
 
     # Symfony apache project container
-    www:
+    web:
         build: docker/php
         container_name: fit-tracker-php
         ports:
