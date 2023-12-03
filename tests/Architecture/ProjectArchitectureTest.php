@@ -13,27 +13,27 @@ final class ProjectArchitectureTest
     public function testDomainShouldBeIndependent(): Rule
     {
         return PHPat::rule()
-            ->classes(Selector::namespace('FitTrackerApi\Domain'))
+            ->classes(Selector::inNamespace('FitTrackerApi\Domain'))
             ->canOnlyDependOn()
-            ->classes(Selector::namespace('FitTrackerApi\Domain'))
+            ->classes(Selector::inNamespace('FitTrackerApi\Domain'))
             ->because('this will break ddd architecture');
     }
 
     public function testDomainShouldBeFinal(): Rule
     {
         return PHPat::rule()
-            ->classes(Selector::namespace('FitTrackerApi\Domain'))
+            ->classes(Selector::inNamespace('FitTrackerApi\Domain'))
             ->shouldBeFinal();
     }
 
     public function testDomainDoesNotDependOnOtherLayers(): Rule
     {
         return PHPat::rule()
-            ->classes(Selector::namespace('FitTrackerApi\Domain'))
+            ->classes(Selector::inNamespace('FitTrackerApi\Domain'))
             ->shouldNotDependOn()
             ->classes(
-                Selector::namespace('FitTrackerApi\Application'),
-                Selector::namespace('FitTrackerApi\Infrastructure'),
+                Selector::inNamespace('FitTrackerApi\Application'),
+                Selector::inNamespace('FitTrackerApi\Infrastructure'),
             )
             ->because('this will break ddd architecture');
     }
@@ -41,10 +41,9 @@ final class ProjectArchitectureTest
     public function testApplicationDoesNotDependOnInfra(): Rule
     {
         return PHPat::rule()
-            ->classes(Selector::namespace('FitTrackerApi\Application'))
+            ->classes(Selector::inNamespace('FitTrackerApi\Application'))
             ->shouldNotDependOn()
-            ->classes(Selector::namespace('FitTrackerApi\Infrastructure'))
+            ->classes(Selector::inNamespace('FitTrackerApi\Infrastructure'))
             ->because('this will break ddd architecture');
     }
-
 }
