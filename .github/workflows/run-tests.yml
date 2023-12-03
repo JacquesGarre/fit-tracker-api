@@ -43,5 +43,3 @@ jobs:
         with:
           threshold: 100
           fail: true
-          publish: true
-          coverage-summary-title: "Code Coverage Summary"
