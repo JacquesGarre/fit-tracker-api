@@ -36,3 +36,13 @@ jobs:
       - uses: "ramsey/composer-install@v2"
       - run: echo "Composer dependencies have been installed"
       - run: vendor/bin/phpstan analyse -c tests/phpstan.neon --level 6
+  code-coverage:
+    runs-on: ubuntu-latest
+    steps:              
+      - uses: insightsengineering/coverage-action@v2.4.1
+        with:
+          path: ./cobertura.xml
+          threshold: 100
+          fail: true
+          publish: true
+          coverage-summary-title: "Code Coverage Summary"
