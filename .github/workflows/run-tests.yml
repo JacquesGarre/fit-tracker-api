@@ -41,7 +41,6 @@ jobs:
     steps:              
       - uses: insightsengineering/coverage-action@v2.4.1
         with:
-          path: ./cobertura.xml
           threshold: 100
           fail: true
           publish: true
