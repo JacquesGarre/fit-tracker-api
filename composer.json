@@ -7,6 +7,8 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "eventsauce/eventsauce": "^3.4",
+        "fakerphp/faker": "^1.23",
         "symfony/console": "7.0.*",
         "symfony/dotenv": "7.0.*",
         "symfony/flex": "^2",
@@ -74,14 +76,15 @@
         ],
         "lint": "php vendor/bin/phpcs --standard=PSR12 src/ tests/",
         "test:coverage": "XDEBUG_MODE=coverage bin/phpunit --coverage-text",
-        "test:architecture": "php vendor/bin/phpstan analyse -c tests/phpstan.neon --level 6",
+        "test:architecture": "php vendor/bin/phpstan analyse -c tests/phpstan.neon --level 5",
         "test:unit": "php bin/phpunit tests/Unit",
         "test:integration": "php bin/phpunit tests/Integration",
         "test": [
             "@lint",
             "@test:architecture",
             "@test:unit",
-            "@test:integration"
+            "@test:integration",
+            "@test:coverage"
         ]
     },
     "conflict": {

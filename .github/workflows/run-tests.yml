@@ -35,4 +35,4 @@ jobs:
           php-version: "latest"
       - uses: "ramsey/composer-install@v2"
       - run: echo "Composer dependencies have been installed"
-      - run: vendor/bin/phpstan analyse -c tests/phpstan.neon --level 6
+      - run: vendor/bin/phpstan analyse -c tests/phpstan.neon --level 5

@@ -15,7 +15,10 @@ final class ProjectArchitectureTest
         return PHPat::rule()
             ->classes(Selector::inNamespace('FitTrackerApi\Domain'))
             ->canOnlyDependOn()
-            ->classes(Selector::inNamespace('FitTrackerApi\Domain'))
+            ->classes(
+                Selector::inNamespace('FitTrackerApi\Domain'),
+                Selector::inNamespace('EventSauce\EventSourcing')
+            )
             ->because('this will break ddd architecture');
     }
 
