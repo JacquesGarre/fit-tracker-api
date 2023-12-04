@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace FitTrackerApi\Tests\Architecture;
 
+use Exception;
 use PHPat\Selector\Selector;
 use PHPat\Test\Builder\Rule;
 use PHPat\Test\PHPat;
@@ -17,9 +18,11 @@ final class ProjectArchitectureTest
             ->canOnlyDependOn()
             ->classes(
                 Selector::inNamespace('FitTrackerApi\Domain'),
-                Selector::inNamespace('EventSauce\EventSourcing')
+                Selector::inNamespace('EventSauce\EventSourcing'),
+                Selector::classname(Exception::class),
+                Selector::inNamespace('Ramsey\Uuid')
             )
-            ->because('this will break ddd architecture');
+            ->because('Domain should be independent');
     }
 
     public function testDomainShouldBeFinal(): Rule
@@ -38,7 +41,7 @@ final class ProjectArchitectureTest
                 Selector::inNamespace('FitTrackerApi\Application'),
                 Selector::inNamespace('FitTrackerApi\Infrastructure'),
             )
-            ->because('this will break ddd architecture');
+            ->because('Domain should not depend on other layers');
     }
 
     public function testApplicationDoesNotDependOnInfra(): Rule
@@ -47,6 +50,6 @@ final class ProjectArchitectureTest
             ->classes(Selector::inNamespace('FitTrackerApi\Application'))
             ->shouldNotDependOn()
             ->classes(Selector::inNamespace('FitTrackerApi\Infrastructure'))
-            ->because('this will break ddd architecture');
+            ->because('Application should not depend on infrastructure layer');
     }
 }

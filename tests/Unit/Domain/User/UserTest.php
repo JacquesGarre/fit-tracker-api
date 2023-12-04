@@ -7,6 +7,7 @@ namespace FitTrackerApi\Tests\Unit\Domain\User;
 use Faker\Factory;
 use Faker\Generator;
 use FitTrackerApi\Domain\User\User;
+use FitTrackerApi\Domain\User\UserEmail;
 use FitTrackerApi\Domain\User\UserId;
 use PHPUnit\Framework\TestCase;
 
@@ -21,9 +22,11 @@ final class UserTest extends TestCase
 
     public function testInitiate(): void
     {
-        $value = $this->faker->uuid();
-        $userID = UserId::fromString($value);
-        $user = User::initiate($userID);
+        $id = UserId::fromString($this->faker->uuid());
+        $email = new UserEmail($this->faker->email());
+        $user = User::initiate($id, $email);
         self::assertInstanceOf(User::class, $user);
+        self::assertEquals($id, $user->id());
+        self::assertEquals($email, $user->email());
     }
 }

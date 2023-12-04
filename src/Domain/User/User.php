@@ -12,14 +12,32 @@ final class User implements AggregateRoot
 {
     use AggregateRootBehaviour;
 
-    public static function initiate(UserId $id): User
-    {
-        $process = new static($id);
-        $process->recordThat(new UserInitiated($id));
-        return $process;
+    public function __construct(
+        private readonly UserId $id,
+        private readonly UserEmail $email
+    ) {
+    }
+
+    public static function initiate(
+        UserId $id,
+        UserEmail $email
+    ): User {
+        $user = new static($id, $email);
+        $user->recordThat(new UserInitiated($id, $email));
+        return $user;
     }
 
     public static function applyUserInitiated(): void
     {
+    }
+
+    public function id(): UserId
+    {
+        return $this->id;
+    }
+
+    public function email(): UserEmail
+    {
+        return $this->email;
     }
 }
