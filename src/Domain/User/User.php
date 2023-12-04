@@ -14,15 +14,17 @@ final class User implements AggregateRoot
 
     public function __construct(
         private readonly UserId $id,
-        private readonly UserEmail $email
+        private readonly UserEmail $email,
+        private readonly UserHashedPassword $password
     ) {
     }
 
     public static function create(
         UserId $id,
-        UserEmail $email
+        UserEmail $email,
+        UserHashedPassword $password
     ): User {
-        $user = new static($id, $email);
+        $user = new static($id, $email, $password);
         $user->recordThat(new UserCreated($id, $email));
         return $user;
     }
@@ -39,5 +41,10 @@ final class User implements AggregateRoot
     public function email(): UserEmail
     {
         return $this->email;
+    }
+
+    public function password(): UserHashedPassword
+    {
+        return $this->password;
     }
 }
