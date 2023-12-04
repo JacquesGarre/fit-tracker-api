@@ -6,7 +6,7 @@ namespace FitTrackerApi\Domain\User;
 
 use EventSauce\EventSourcing\AggregateRoot;
 use EventSauce\EventSourcing\AggregateRootBehaviour;
-use FitTrackerApi\Domain\DomainEvents\UserInitiated;
+use FitTrackerApi\Domain\DomainEvents\UserCreated;
 
 final class User implements AggregateRoot
 {
@@ -18,16 +18,16 @@ final class User implements AggregateRoot
     ) {
     }
 
-    public static function initiate(
+    public static function create(
         UserId $id,
         UserEmail $email
     ): User {
         $user = new static($id, $email);
-        $user->recordThat(new UserInitiated($id, $email));
+        $user->recordThat(new UserCreated($id, $email));
         return $user;
     }
 
-    public static function applyUserInitiated(): void
+    public static function applyUserCreated(): void
     {
     }
 

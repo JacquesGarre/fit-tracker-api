@@ -6,7 +6,7 @@ use EventSauce\EventSourcing\Serialization\SerializablePayload;
 use FitTrackerApi\Domain\User\UserEmail;
 use FitTrackerApi\Domain\User\UserId;
 
-final class UserInitiated implements SerializablePayload
+final class UserCreated implements SerializablePayload
 {
     public function __construct(
         private readonly UserId $id,

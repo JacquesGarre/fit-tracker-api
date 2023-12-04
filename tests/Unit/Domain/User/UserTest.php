@@ -20,11 +20,11 @@ final class UserTest extends TestCase
         $this->faker = Factory::create();
     }
 
-    public function testInitiate(): void
+    public function testCreate(): void
     {
         $id = UserId::fromString($this->faker->uuid());
         $email = new UserEmail($this->faker->email());
-        $user = User::initiate($id, $email);
+        $user = User::create($id, $email);
         self::assertInstanceOf(User::class, $user);
         self::assertEquals($id, $user->id());
         self::assertEquals($email, $user->email());
