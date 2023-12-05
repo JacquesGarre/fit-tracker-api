@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace FitTrackerApi\Tests\Unit\Domain\DomainEvents;
+namespace FitTrackerApi\Tests\Unit\Domain\User\DomainEvents;
 
 use Faker\Factory;
 use Faker\Generator;
-use FitTrackerApi\Domain\DomainEvents\UserCreated;
+use FitTrackerApi\Domain\User\DomainEvents\UserCreated;
 use FitTrackerApi\Domain\User\UserEmail;
 use FitTrackerApi\Domain\User\UserId;
 use PHPUnit\Framework\TestCase;

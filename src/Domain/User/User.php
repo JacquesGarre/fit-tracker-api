@@ -6,7 +6,7 @@ namespace FitTrackerApi\Domain\User;
 
 use EventSauce\EventSourcing\AggregateRoot;
 use EventSauce\EventSourcing\AggregateRootBehaviour;
-use FitTrackerApi\Domain\DomainEvents\UserCreated;
+use FitTrackerApi\Domain\User\DomainEvents\UserCreated;
 
 final class User implements AggregateRoot
 {

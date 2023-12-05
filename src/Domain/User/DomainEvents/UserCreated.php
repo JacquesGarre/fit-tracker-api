@@ -1,6 +1,6 @@
 <?php
 
-namespace FitTrackerApi\Domain\DomainEvents;
+namespace FitTrackerApi\Domain\User\DomainEvents;
 
 use EventSauce\EventSourcing\Serialization\SerializablePayload;
 use FitTrackerApi\Domain\User\UserEmail;

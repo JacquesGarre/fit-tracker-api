@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace FitTrackerApi\Tests\Architecture;
 
 use Exception;
+use FitTrackerApi\Domain\User\UserRepositoryInterface;
 use PHPat\Selector\Selector;
 use PHPat\Test\Builder\Rule;
 use PHPat\Test\PHPat;
@@ -28,7 +29,12 @@ final class ProjectArchitectureTest
     public function testDomainShouldBeFinal(): Rule
     {
         return PHPat::rule()
-            ->classes(Selector::inNamespace('FitTrackerApi\Domain'))
+            ->classes(
+                Selector::inNamespace('FitTrackerApi\Domain')
+            )
+            ->excluding(
+                Selector::classname(UserRepositoryInterface::class)
+            )
             ->shouldBeFinal();
     }
 

@@ -8,6 +8,8 @@
 /vendor/
 ###< symfony/framework-bundle ###
 .env.test
+.env
+/.env
 
 
 ###> symfony/phpunit-bridge ###
