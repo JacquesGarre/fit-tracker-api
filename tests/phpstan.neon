@@ -1,8 +1,0 @@
-parameters:
-	paths:
-		- ../src
-services:
-    -
-        class: FitTrackerApi\Tests\Architecture\ProjectArchitectureTest
-        tags:
-            - phpat.test
