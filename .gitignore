@@ -8,8 +8,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 .env.test
-.env
-/.env
 
 
 ###> symfony/phpunit-bridge ###
@@ -26,4 +24,5 @@
 /.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+
 .env
