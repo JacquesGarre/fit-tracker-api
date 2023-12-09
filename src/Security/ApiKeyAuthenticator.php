@@ -38,20 +38,19 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
         if (null === $apiToken) {
             throw new CustomUserMessageAuthenticationException('No api key provided');
         }
-        if($this->apiKey !== $apiToken) {
+        if ($this->apiKey !== $apiToken) {
             throw new CustomUserMessageAuthenticationException('Wrong api key provided');
         }
 
-
-        $login = strpos($request->getPathInfo(), '/api/auth') !== FALSE;
-        $users = strpos($request->getPathInfo(), '/api/users') !== FALSE;
-        if($request->isMethod('post') && ($login || $users)){
+        $login = strpos($request->getPathInfo(), '/api/auth') !== false;
+        $users = strpos($request->getPathInfo(), '/api/users') !== false;
+        if ($request->isMethod('post') && ($login || $users)) {
             return new SelfValidatingPassport(
-                new UserBadge($apiToken, function() {
+                new UserBadge($apiToken, function () {
                     return new User();
                 })
             );
-        }       
+        }
 
         $jwtToken = $request->headers->get('Authorization');
         if (null === $jwtToken) {
@@ -64,7 +63,7 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
         ]);
 
         return new SelfValidatingPassport(
-            new UserBadge($email, function() use ($user) {
+            new UserBadge($email, function () use ($user) {
                 if (!$user) {
                     throw new CustomUserMessageAuthenticationException('User not found');
                 }

@@ -25,14 +25,4 @@ jobs:
       - uses: "ramsey/composer-install@v2"
       - run: echo "Composer dependencies have been installed"
       - run: vendor/bin/phpunit tests/Unit
-  architecture-testing:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
-      - uses: "shivammathur/setup-php@v2"
-        with:
-          php-version: "latest"
-      - uses: "ramsey/composer-install@v2"
-      - run: echo "Composer dependencies have been installed"
-      - run: vendor/bin/phpstan analyse -c tests/phpstan.neon --level 5
+

@@ -8,8 +8,10 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 final class UserPasswordHasher implements ProcessorInterface
 {
-    public function __construct(private readonly ProcessorInterface $processor, private readonly UserPasswordHasherInterface $passwordHasher)
-    {
+    public function __construct(
+        private readonly ProcessorInterface $processor,
+        private readonly UserPasswordHasherInterface $passwordHasher
+    ) {
     }
 
     public function process($data, Operation $operation, array $uriVariables = [], array $context = [])
