@@ -19,3 +19,11 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+    FitTrackerApi\Security\UserPasswordHasher:
+        bind:
+            $processor: '@api_platform.doctrine.orm.state.persist_processor'
+
+    FitTrackerApi\Security\ApiKeyAuthenticator:
+        arguments:
+            $apiKey: '%env(API_KEY)%'
