@@ -25,7 +25,7 @@ class UserTest extends TestCase
         $user->setEmail($email);
         $user->setPassword($password);
         self::assertEquals($email, $user->getEmail());
-        self::assertEquals($password, $user->getPassword());
+        self::assertTrue(password_verify($password, $user->getPassword()));
         self::assertNull($user->getId());
     }
 }
