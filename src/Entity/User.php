@@ -17,6 +17,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use FitTrackerApi\Security\UserPasswordHasher;
 
+/**
+ * @codeCoverageIgnore
+ */
 #[ApiResource(
     operations: [
         new GetCollection(),

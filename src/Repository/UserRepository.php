@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 
 /**
+ * @codeCoverageIgnore
  * @extends ServiceEntityRepository<User>
  *
  * @implements PasswordUpgraderInterface<User>
