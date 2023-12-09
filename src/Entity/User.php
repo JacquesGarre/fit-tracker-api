@@ -2,6 +2,8 @@
 
 namespace FitTrackerApi\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -56,6 +58,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank(groups: ['user:create'])]
     #[Groups(['user:create', 'user:update'])]
     private ?string $plainPassword = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Program::class, orphanRemoval: true)]
+    private Collection $programs;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Record::class, orphanRemoval: true)]
+    private Collection $records;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Workout::class, orphanRemoval: true)]
+    private Collection $workouts;
+
+    public function __construct()
+    {
+        $this->programs = new ArrayCollection();
+        $this->records = new ArrayCollection();
+        $this->workouts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -136,5 +154,95 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): void
     {
         $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Program>
+     */
+    public function getPrograms(): Collection
+    {
+        return $this->programs;
+    }
+
+    public function addProgram(Program $program): static
+    {
+        if (!$this->programs->contains($program)) {
+            $this->programs->add($program);
+            $program->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgram(Program $program): static
+    {
+        if ($this->programs->removeElement($program)) {
+            // set the owning side to null (unless already changed)
+            if ($program->getUser() === $this) {
+                $program->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Record>
+     */
+    public function getRecords(): Collection
+    {
+        return $this->records;
+    }
+
+    public function addRecord(Record $record): static
+    {
+        if (!$this->records->contains($record)) {
+            $this->records->add($record);
+            $record->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecord(Record $record): static
+    {
+        if ($this->records->removeElement($record)) {
+            // set the owning side to null (unless already changed)
+            if ($record->getUser() === $this) {
+                $record->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Workout>
+     */
+    public function getWorkouts(): Collection
+    {
+        return $this->workouts;
+    }
+
+    public function addWorkout(Workout $workout): static
+    {
+        if (!$this->workouts->contains($workout)) {
+            $this->workouts->add($workout);
+            $workout->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkout(Workout $workout): static
+    {
+        if ($this->workouts->removeElement($workout)) {
+            // set the owning side to null (unless already changed)
+            if ($workout->getUser() === $this) {
+                $workout->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
