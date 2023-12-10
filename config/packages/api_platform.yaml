@@ -1,6 +1,8 @@
 api_platform:
     title: Fit tracker api
     version: 1.0.0
+    eager_loading:
+        max_joins: 1000
     formats:
         json:     ['application/json']
         jsonld: ['application/ld+json']

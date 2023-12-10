@@ -7,31 +7,38 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\WorkoutRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: WorkoutRepository::class)]
-#[ApiResource]
+#[ApiResource(normalizationContext: ['groups' => ['workout', 'exercise']])]
 class Workout
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('workout')]
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'workouts')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('workout')]
     private ?Program $program = null;
 
     #[ORM\ManyToOne(inversedBy: 'workouts')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('workout')]
     private ?User $user = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups('workout')]
     private ?\DateTimeImmutable $startedAt = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups('workout')]
     private ?\DateTimeImmutable $endedAt = null;
 
     #[ORM\OneToMany(mappedBy: 'workout', targetEntity: WorkoutExercise::class, orphanRemoval: true)]
+    #[Groups('workout')]
     private Collection $workoutExercises;
 
     public function __construct()

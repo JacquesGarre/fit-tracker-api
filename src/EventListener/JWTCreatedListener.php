@@ -15,7 +15,7 @@ class JWTCreatedListener
 
         // Add custom claims to the token
         $payload = $event->getData();
-        $payload['id'] = $user->getId(); 
+        $payload['id'] = $user->getId();
 
         // Update the token data
         $event->setData($payload);

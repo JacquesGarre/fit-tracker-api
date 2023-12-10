@@ -31,3 +31,10 @@ services:
     FitTrackerApi\EventListener\JWTCreatedListener:
         tags:
             - { name: 'kernel.event_listener', event: 'lexik_jwt_authentication.on_jwt_created', method: 'onJWTCreated' }
+    FitTrackerApi\EventListener\WorkoutEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'postPersist'
+                priority: 500
+                connection: 'default'

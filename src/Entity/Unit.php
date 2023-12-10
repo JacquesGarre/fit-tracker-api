@@ -5,6 +5,7 @@ namespace FitTrackerApi\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\UnitRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @codeCoverageIgnore
@@ -19,9 +20,11 @@ class Unit
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('exercise', 'program')]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('exercise', 'program')]
     private ?string $abbreviation = null;
 
     public function getId(): ?int
