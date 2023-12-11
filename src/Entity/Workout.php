@@ -8,9 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\WorkoutRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 #[ORM\Entity(repositoryClass: WorkoutRepository::class)]
 #[ApiResource(normalizationContext: ['groups' => ['workout', 'exercise']])]
+#[ApiFilter(SearchFilter::class, properties: ['status' => 'exact'])]
 class Workout
 {
     #[ORM\Id]
