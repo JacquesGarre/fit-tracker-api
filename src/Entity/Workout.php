@@ -41,6 +41,9 @@ class Workout
     #[Groups('workout')]
     private Collection $workoutExercises;
 
+    #[ORM\Column(length: 255)]
+    private ?string $status = null;
+
     public function __construct()
     {
         $this->workoutExercises = new ArrayCollection();
@@ -125,6 +128,18 @@ class Workout
                 $workoutExercise->setWorkout(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

@@ -29,6 +29,7 @@ class WorkoutExercise
     private ?Exercise $exercise = null;
 
     #[ORM\OneToMany(mappedBy: 'workoutExercise', targetEntity: Record::class, orphanRemoval: true)]
+    #[Groups('workout')]
     private Collection $records;
 
     public function __construct()
