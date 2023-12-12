@@ -38,6 +38,7 @@ class Record
     private ?WorkoutExercise $workoutExercise = null;
 
     #[ORM\Column]
+    #[Groups('workout')]
     private ?int $setId = null;
 
     public function getId(): ?int
