@@ -17,6 +17,7 @@ class Unit
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('exercise', 'program')]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
