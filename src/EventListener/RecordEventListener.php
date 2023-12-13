@@ -26,6 +26,5 @@ class RecordEventListener
             $entityManager->remove($existingRecord);
             $entityManager->flush();
         }
-
     }
 }
