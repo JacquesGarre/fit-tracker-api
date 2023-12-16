@@ -22,8 +22,8 @@ security:
             pattern: ^/api$
             security: false
         api:
-            custom_authenticators:
-                - FitTrackerApi\Security\ApiKeyAuthenticator
+            # custom_authenticators:
+            #    - FitTrackerApi\Security\ApiKeyAuthenticator
             stateless: true
             provider: users
             json_login:
@@ -35,7 +35,7 @@ security:
             jwt: ~
 
     access_control:
-        - { path: ^/api$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
-        - { path: ^/api/auth, roles: PUBLIC_ACCESS }
-        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: ['POST'] }
-        - { path: ^/api/, roles: IS_AUTHENTICATED }
+        # - { path: ^/api$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
+        # - { path: ^/api/auth, roles: PUBLIC_ACCESS }
+        # - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: ['POST'] }
+        # - { path: ^/api/, roles: IS_AUTHENTICATED }

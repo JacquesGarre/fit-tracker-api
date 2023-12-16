@@ -10,6 +10,7 @@ use FitTrackerApi\Entity\Program;
 use FitTrackerApi\Entity\Workout;
 use FitTrackerApi\Entity\Record;
 use Doctrine\ORM\QueryBuilder;
+use FitTrackerApi\Entity\Chart;
 use Symfony\Bundle\SecurityBundle\Security;
 
 final class CurrentUserQueryExtension implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
@@ -51,6 +52,7 @@ final class CurrentUserQueryExtension implements QueryCollectionExtensionInterfa
                 Program::class !== $resourceClass
                 && Workout::class !== $resourceClass
                 && Record::class !== $resourceClass
+                && Chart::class !== $resourceClass
             )
             || $this->security->isGranted('ROLE_ADMIN')
             || null === $user = $this->security->getUser()
