@@ -6,6 +6,7 @@ class ChartXAxis
 {
     public ?array $categories = null;
     public array $labels = [];
+    public bool $visible = false;
 
     public function getCategories(): ?array
     {

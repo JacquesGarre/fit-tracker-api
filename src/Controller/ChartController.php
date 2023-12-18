@@ -113,7 +113,6 @@ class ChartController extends AbstractController
                     "fontSize" => "15px",
                     "marginLeft" => "10px"
                 ],
-                "align" => "right"
             ]);
             $xAxis->setCategories($categories);
             $chart->addXAxi($xAxis);
@@ -131,7 +130,7 @@ class ChartController extends AbstractController
                 ->setTitle(["text" => ''])
                 ->setMax($max)
                 ->setMin(0)
-                ->setTickInterval($unit->getTickInterval())
+                ->setTickInterval((int) round($max/10))
                 ->setGridLineColor("transparent");
             $chart->addYaxi($yAxis);
 
