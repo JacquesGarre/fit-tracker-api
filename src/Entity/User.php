@@ -70,15 +70,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Workout::class, orphanRemoval: true)]
     private Collection $workouts;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Chart::class, orphanRemoval: true)]
-    private Collection $charts;
-
     public function __construct()
     {
         $this->programs = new ArrayCollection();
         $this->records = new ArrayCollection();
         $this->workouts = new ArrayCollection();
-        $this->charts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -246,36 +242,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($workout->getUser() === $this) {
                 $workout->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Chart>
-     */
-    public function getCharts(): Collection
-    {
-        return $this->charts;
-    }
-
-    public function addChart(Chart $chart): static
-    {
-        if (!$this->charts->contains($chart)) {
-            $this->charts->add($chart);
-            $chart->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeChart(Chart $chart): static
-    {
-        if ($this->charts->removeElement($chart)) {
-            // set the owning side to null (unless already changed)
-            if ($chart->getUser() === $this) {
-                $chart->setUser(null);
             }
         }
 

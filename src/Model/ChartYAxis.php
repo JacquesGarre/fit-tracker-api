@@ -1,57 +1,18 @@
 <?php
 
-namespace FitTrackerApi\Entity;
+namespace FitTrackerApi\Model;
 
-use ApiPlatform\Metadata\ApiResource;
-use Doctrine\ORM\Mapping as ORM;
-use FitTrackerApi\Repository\ChartYAxisRepository;
-use Symfony\Component\Serializer\Annotation\Groups;
+use FitTrackerApi\Entity\Unit;
 
-#[ORM\Entity(repositoryClass: ChartYAxisRepository::class)]
-#[ApiResource(normalizationContext: ['groups' => ['chart']])]
 class ChartYAxis
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\Column]
-    #[Groups('chart')]
-    private array $title = [];
-
-    #[ORM\Column]
-    #[Groups('chart')]
-    private ?int $max = null;
-
-    #[ORM\Column]
-    #[Groups('chart')]
-    private ?int $min = null;
-
-    #[ORM\Column]
-    #[Groups('chart')]
-    private ?int $tickInterval = null;
-
-    #[ORM\Column(length: 255)]
-    #[Groups('chart')]
-    private ?string $gridLineColor = null;
-
-    #[ORM\ManyToOne(inversedBy: 'yAxis')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Chart $chart = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Unit $unit = null;
-
-    #[ORM\Column(nullable: true)]
-    #[Groups('chart')]
-    private ?bool $opposite = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    public array $title = [];
+    public ?int $max = null;
+    public ?int $min = null;
+    public ?int $tickInterval = null;
+    public ?string $gridLineColor = null;
+    public ?Unit $unit = null;
+    public ?bool $opposite = null;
 
     public function getTitle(): array
     {
@@ -112,19 +73,7 @@ class ChartYAxis
 
         return $this;
     }
-
-    public function getChart(): ?Chart
-    {
-        return $this->chart;
-    }
-
-    public function setChart(?Chart $chart): static
-    {
-        $this->chart = $chart;
-
-        return $this;
-    }
-
+    
     public function getUnit(): ?Unit
     {
         return $this->unit;

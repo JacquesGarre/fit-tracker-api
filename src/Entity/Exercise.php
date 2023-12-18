@@ -30,9 +30,6 @@ class Exercise
     #[ORM\OneToMany(mappedBy: 'exercise', targetEntity: WorkoutExercise::class)]
     private Collection $workoutExercises;
 
-    #[ORM\OneToMany(mappedBy: 'exercise', targetEntity: Chart::class, orphanRemoval: true)]
-    private Collection $charts;
-
     public function __construct()
     {
         $this->units = new ArrayCollection();
@@ -105,36 +102,6 @@ class Exercise
             // set the owning side to null (unless already changed)
             if ($workoutExercise->getExercise() === $this) {
                 $workoutExercise->setExercise(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Chart>
-     */
-    public function getCharts(): Collection
-    {
-        return $this->charts;
-    }
-
-    public function addChart(Chart $chart): static
-    {
-        if (!$this->charts->contains($chart)) {
-            $this->charts->add($chart);
-            $chart->setExercise($this);
-        }
-
-        return $this;
-    }
-
-    public function removeChart(Chart $chart): static
-    {
-        if ($this->charts->removeElement($chart)) {
-            // set the owning side to null (unless already changed)
-            if ($chart->getExercise() === $this) {
-                $chart->setExercise(null);
             }
         }
 

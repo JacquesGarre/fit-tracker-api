@@ -1,61 +1,19 @@
 <?php
 
-namespace FitTrackerApi\Entity;
+namespace FitTrackerApi\Model;
 
-use ApiPlatform\Metadata\ApiResource;
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
-use FitTrackerApi\Repository\ChartSerieRepository;
-use Symfony\Component\Serializer\Annotation\Groups;
+use FitTrackerApi\Entity\Unit;
 
-#[ORM\Entity(repositoryClass: ChartSerieRepository::class)]
-#[ApiResource(normalizationContext: ['groups' => ['chart']])]
 class ChartSerie
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\Column(length: 255)]
-    #[Groups('chart')]
-    private ?string $type = null;
-
-    #[ORM\Column(length: 255)]
-    #[Groups('chart')]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 255)]
-    #[Groups('chart')]
-    private ?string $color = null;
-
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    #[Groups('chart')]
-    private ?array $data = null;
-
-    #[ORM\Column]
-    #[Groups('chart')]
-    private ?float $pointPadding = null;
-
-    #[ORM\Column]
-    #[Groups('chart')]
-    private ?float $pointPlacement = null;
-
-    #[ORM\Column]
-    #[Groups('chart')]
-    private ?int $yAxis = null;
-
-    #[ORM\ManyToOne(inversedBy: 'series')]
-    private ?Chart $chart = null;
-
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Unit $unit = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    public ?string $type = null;
+    public ?string $name = null;
+    public ?string $color = null;
+    public ?array $data = null;
+    public ?float $pointPadding = null;
+    public ?float $pointPlacement = null;
+    public ?int $yAxis = null;
+    public ?Unit $unit = null;
 
     public function getType(): ?string
     {
@@ -137,18 +95,6 @@ class ChartSerie
     public function setYAxis(int $yAxis): static
     {
         $this->yAxis = $yAxis;
-
-        return $this;
-    }
-
-    public function getChart(): ?Chart
-    {
-        return $this->chart;
-    }
-
-    public function setChart(?Chart $chart): static
-    {
-        $this->chart = $chart;
 
         return $this;
     }
