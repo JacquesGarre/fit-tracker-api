@@ -5,6 +5,7 @@ namespace FitTrackerApi\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\ExerciseRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -29,6 +30,14 @@ class Exercise
 
     #[ORM\OneToMany(mappedBy: 'exercise', targetEntity: WorkoutExercise::class)]
     private Collection $workoutExercises;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups('exercise')]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups('exercise')]
+    private ?string $miniature = null;
 
     public function __construct()
     {
@@ -104,6 +113,30 @@ class Exercise
                 $workoutExercise->setExercise(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getMiniature(): ?string
+    {
+        return $this->miniature;
+    }
+
+    public function setMiniature(?string $miniature): static
+    {
+        $this->miniature = $miniature;
 
         return $this;
     }
