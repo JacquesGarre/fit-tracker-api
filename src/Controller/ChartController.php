@@ -64,10 +64,12 @@ class ChartController extends AbstractController
 
             if(!empty($workoutExercise)){
                 foreach($workoutExercise->getRecords() as $record){                
-                    $recordSets[$record->getSetId()][date('d/m/Y H\hi', $workout->getStartedAt()->getTimestamp())] = (float) $record->getValue();
+                    $recordSets[$record->getUnit()->getId()][$record->getSetId()][date('d/m/Y H\hi', $workout->getStartedAt()->getTimestamp())] = (float) $record->getValue();
                 }
             }
         }
+
+       
 
         $allKeys = [];
         foreach ($recordSets as $subArray) {
@@ -77,6 +79,7 @@ class ChartController extends AbstractController
         foreach ($recordSets as &$subArray) {
             $subArray = array_replace(array_fill_keys($allKeys, '0'), $subArray);
         }
+
                 
         // Set series
         $sets = array_map(function (Record $record) {
@@ -124,13 +127,13 @@ class ChartController extends AbstractController
             $values = array_map(function(Record $record) {
                 return (float) ($record->getValue());
             }, $unitRecords);
-            $max = !empty($values) ? (int) round(max($values)) : 0;
+            $max = !empty($values) ? (int) round(max($values)) + 1 : 0;
             $yAxis = new ChartYAxis();
             $yAxis->setUnit($unit)
                 ->setTitle(["text" => ''])
                 ->setMax($max)
                 ->setMin(0)
-                ->setTickInterval((int) round($max/10))
+                ->setTickInterval($unit->getTickInterval())
                 ->setGridLineColor("transparent");
             $chart->addYaxi($yAxis);
 
@@ -149,7 +152,7 @@ class ChartController extends AbstractController
                     ->setPointPlacement($pointPlacement)
                     ->setYAxis(0);
                 
-                $data = array_values($recordSets[$setID]);
+                $data = array_values($recordSets[$unit->getId()][$setID]);
                 $serie->setData(array_values($data));
 
                 // Add serie

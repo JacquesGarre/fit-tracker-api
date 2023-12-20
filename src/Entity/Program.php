@@ -8,9 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\ProgramRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 #[ORM\Entity(repositoryClass: ProgramRepository::class)]
 #[ApiResource(normalizationContext: ['groups' => ['program', 'exercise', 'workout']])]
+#[ApiFilter(SearchFilter::class, properties: ['softDeleted' => 'exact'])]
 class Program
 {
     #[ORM\Id]
@@ -34,6 +37,10 @@ class Program
 
     #[ORM\OneToMany(mappedBy: 'program', targetEntity: Workout::class)]
     private Collection $workouts;
+
+    #[ORM\Column(nullable: true)]
+    #[Groups('program')]
+    private bool $softDeleted = false;
 
     public function __construct()
     {
@@ -120,6 +127,18 @@ class Program
                 $workout->setProgram(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isSoftDeleted(): ?bool
+    {
+        return $this->softDeleted;
+    }
+
+    public function setSoftDeleted(?bool $softDeleted): static
+    {
+        $this->softDeleted = $softDeleted;
 
         return $this;
     }

@@ -9,7 +9,7 @@ class ChartYAxis
     public array $title = [];
     public ?int $max = null;
     public ?int $min = null;
-    public ?int $tickInterval = null;
+    public ?float $tickInterval = null;
     public ?string $gridLineColor = null;
     public ?Unit $unit = null;
     public ?bool $opposite = null;
@@ -50,12 +50,12 @@ class ChartYAxis
         return $this;
     }
 
-    public function getTickInterval(): ?int
+    public function getTickInterval(): ?float
     {
         return $this->tickInterval;
     }
 
-    public function setTickInterval(int $tickInterval): static
+    public function setTickInterval(float $tickInterval): static
     {
         $this->tickInterval = $tickInterval;
 
