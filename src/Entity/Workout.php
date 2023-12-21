@@ -12,7 +12,7 @@ use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 #[ORM\Entity(repositoryClass: WorkoutRepository::class)]
-#[ApiResource(normalizationContext: ['groups' => ['workout', 'exercise']])]
+#[ApiResource(normalizationContext: ['groups' => ['workout', 'exercise', 'program']])]
 #[ApiFilter(SearchFilter::class, properties: ['status' => 'exact'])]
 class Workout
 {
