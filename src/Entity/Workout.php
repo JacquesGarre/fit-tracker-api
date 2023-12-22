@@ -45,7 +45,12 @@ class Workout
     private Collection $workoutExercises;
 
     #[ORM\Column(length: 255)]
-    private ?string $status = null;
+    #[Groups('workout')]
+    private string $status = 'planned';
+
+    #[ORM\Column(nullable: true)]
+    #[Groups('workout')]
+    private ?\DateTimeImmutable $plannedAt = null;
 
     public function __construct()
     {
@@ -143,6 +148,18 @@ class Workout
     public function setStatus(string $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getPlannedAt(): ?\DateTimeImmutable
+    {
+        return $this->plannedAt;
+    }
+
+    public function setPlannedAt(?\DateTimeImmutable $plannedAt): static
+    {
+        $this->plannedAt = $plannedAt;
 
         return $this;
     }

@@ -38,9 +38,17 @@ class ChartController extends AbstractController
             'id' => $exerciseId
         ]);
 
-        $workouts = $this->entityManager->getRepository(Workout::class)->findBy([
-            'user' => $user
-        ]);
+        // $workouts = $this->entityManager->getRepository(Workout::class)->findBy([
+        //     'user' => $user
+        // ])->where();
+
+        $workouts = $this->entityManager->getRepository(Workout::class)
+            ->createQueryBuilder('w')
+            ->where('w.user = :user')
+            ->andWhere('w.startedAt IS NOT NULL')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
 
         $workoutExercises = $this->entityManager->getRepository(WorkoutExercise::class)->findBy([
             'exercise' => $exercise,
@@ -50,26 +58,26 @@ class ChartController extends AbstractController
             'user' => $user,
             'workoutExercise' => $workoutExercises
         ]);
-        
+
         $categories = array_map(function (Workout $workout) {
             return date('d/m/Y H\hi', $workout->getStartedAt()->getTimestamp());
         }, $workouts);
         sort($categories); // Source of bugs: should be ordered by startedAt
 
         $recordSets = [];
-        foreach($workouts as $workout){   
-            $workoutExercise = $workout->getWorkoutExercises()->filter(function (WorkoutExercise $workoutExercise) use($exercise) {
+        foreach ($workouts as $workout) {
+            $workoutExercise = $workout->getWorkoutExercises()->filter(function (WorkoutExercise $workoutExercise) use ($exercise) {
                 return $workoutExercise->getExercise()->getId() == $exercise->getId();
             })->first();
 
-            if(!empty($workoutExercise)){
-                foreach($workoutExercise->getRecords() as $record){                
+            if (!empty($workoutExercise)) {
+                foreach ($workoutExercise->getRecords() as $record) {
                     $recordSets[$record->getUnit()->getId()][$record->getSetId()][date('d/m/Y H\hi', $workout->getStartedAt()->getTimestamp())] = (float) $record->getValue();
                 }
             }
         }
 
-       
+
 
         $allKeys = [];
         foreach ($recordSets as $subArray) {
@@ -80,7 +88,7 @@ class ChartController extends AbstractController
             $subArray = array_replace(array_fill_keys($allKeys, '0'), $subArray);
         }
 
-                
+
         // Set series
         $sets = array_map(function (Record $record) {
             return $record->getSetId();
@@ -90,7 +98,7 @@ class ChartController extends AbstractController
 
         $charts = [];
 
-        foreach($exercise->getUnits() as $unit){
+        foreach ($exercise->getUnits() as $unit) {
 
             // Set chart
             $chartTitle = $exercise->getTitle() . ' - ' . $unit->getTitle();
@@ -107,7 +115,7 @@ class ChartController extends AbstractController
                         "borderWidth" => 0
                     ]
                 ]);
-    
+
             // Set xAxis
             $xAxis = new ChartXAxis();
             $xAxis->setLabels([
@@ -124,7 +132,7 @@ class ChartController extends AbstractController
             $unitRecords = array_filter($records, function (Record $record) use ($unit) {
                 return $record->getUnit()->getId() == $unit->getId();
             });
-            $values = array_map(function(Record $record) {
+            $values = array_map(function (Record $record) {
                 return (float) ($record->getValue());
             }, $unitRecords);
             $max = !empty($values) ? (int) round(max($values)) + 1 : 0;
@@ -139,19 +147,19 @@ class ChartController extends AbstractController
 
             // set series
             $pointPadding = 0.4;
-            $pointPlacement = -0.075*(count($sets) - 1);
+            $pointPlacement = -0.075 * (count($sets) - 1);
 
-            foreach($sets as $setID){
+            foreach ($sets as $setID) {
 
                 $serie = new ChartSerie();
                 $serie->setType("column")
                     ->setUnit($unit)
-                    ->setName($unit->getAbbreviation()." (Set ".$setID.")")
+                    ->setName($unit->getAbbreviation() . " (Set " . $setID . ")")
                     ->setColor($unit->getColor())
                     ->setPointPadding($pointPadding)
                     ->setPointPlacement($pointPlacement)
                     ->setYAxis(0);
-                
+
                 $data = array_values($recordSets[$unit->getId()][$setID]);
                 $serie->setData(array_values($data));
 
@@ -163,11 +171,9 @@ class ChartController extends AbstractController
             $pointPadding += 0.02;
 
             $charts[] = $chart;
-
         }
 
         $jsonCharts = $this->serializer->serialize($charts, 'json');
         return new JsonResponse(json_decode($jsonCharts, true));
-
     }
 }
