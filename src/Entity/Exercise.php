@@ -39,11 +39,14 @@ class Exercise
     #[Groups('exercise')]
     private ?string $miniature = null;
 
+    #[ORM\OneToMany(mappedBy: 'exercise', targetEntity: ProgramExercise::class, orphanRemoval: true)]
+    private Collection $programExercises;
+
     public function __construct()
     {
         $this->units = new ArrayCollection();
         $this->workoutExercises = new ArrayCollection();
-        $this->charts = new ArrayCollection();
+        $this->programExercises = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -137,6 +140,36 @@ class Exercise
     public function setMiniature(?string $miniature): static
     {
         $this->miniature = $miniature;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProgramExercise>
+     */
+    public function getProgramExercises(): Collection
+    {
+        return $this->programExercises;
+    }
+
+    public function addProgramExercise(ProgramExercise $programExercise): static
+    {
+        if (!$this->programExercises->contains($programExercise)) {
+            $this->programExercises->add($programExercise);
+            $programExercise->setExercise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgramExercise(ProgramExercise $programExercise): static
+    {
+        if ($this->programExercises->removeElement($programExercise)) {
+            // set the owning side to null (unless already changed)
+            if ($programExercise->getExercise() === $this) {
+                $programExercise->setExercise(null);
+            }
+        }
 
         return $this;
     }

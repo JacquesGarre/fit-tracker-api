@@ -16,9 +16,9 @@ class WorkoutEventListener
             return;
         }
         $entityManager = $args->getObjectManager();
-        foreach ($entity->getProgram()->getExercises() as $exercise) {
+        foreach ($entity->getProgram()->getProgramExercises() as $programExercise) {
             $workoutExercise = new WorkoutExercise();
-            $workoutExercise->setExercise($exercise);
+            $workoutExercise->setExercise($programExercise->getExercise());
             $workoutExercise->setWorkout($entity);
             $entityManager->persist($workoutExercise);
         }

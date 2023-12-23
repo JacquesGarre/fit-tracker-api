@@ -10,9 +10,10 @@ use FitTrackerApi\Repository\ProgramRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 #[ORM\Entity(repositoryClass: ProgramRepository::class)]
-#[ApiResource(normalizationContext: ['groups' => ['program', 'exercise', 'workout']])]
+#[ApiResource(normalizationContext: ['groups' => ['program', 'exercise']])]
 #[ApiFilter(SearchFilter::class, properties: ['softDeleted' => 'exact'])]
 class Program
 {
@@ -31,10 +32,6 @@ class Program
     #[Groups('program')]
     private ?User $user = null;
 
-    #[ORM\ManyToMany(targetEntity: Exercise::class)]
-    #[Groups('program')]
-    private Collection $exercises;
-
     #[ORM\OneToMany(mappedBy: 'program', targetEntity: Workout::class)]
     private Collection $workouts;
 
@@ -42,10 +39,15 @@ class Program
     #[Groups('program')]
     private bool $softDeleted = false;
 
+    #[ORM\OneToMany(mappedBy: 'program', targetEntity: ProgramExercise::class, orphanRemoval: true, cascade: ['persist'])]
+    #[Groups('program')]
+    private Collection $programExercises;
+
     public function __construct()
     {
-        $this->exercises = new ArrayCollection();
+        //$this->exercises = new ArrayCollection();
         $this->workouts = new ArrayCollection();
+        $this->programExercises = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,30 +75,6 @@ class Program
     public function setUser(?User $user): static
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Exercise>
-     */
-    public function getExercises(): Collection
-    {
-        return $this->exercises;
-    }
-
-    public function addExercise(Exercise $exercise): static
-    {
-        if (!$this->exercises->contains($exercise)) {
-            $this->exercises->add($exercise);
-        }
-
-        return $this;
-    }
-
-    public function removeExercise(Exercise $exercise): static
-    {
-        $this->exercises->removeElement($exercise);
 
         return $this;
     }
@@ -139,6 +117,36 @@ class Program
     public function setSoftDeleted(?bool $softDeleted): static
     {
         $this->softDeleted = $softDeleted;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProgramExercise>
+     */
+    public function getProgramExercises(): Collection
+    {
+        return $this->programExercises;
+    }
+
+    public function addProgramExercise(ProgramExercise $programExercise): static
+    {
+        if (!$this->programExercises->contains($programExercise)) {
+            $this->programExercises->add($programExercise);
+            $programExercise->setProgram($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgramExercise(ProgramExercise $programExercise): static
+    {
+        if ($this->programExercises->removeElement($programExercise)) {
+            // set the owning side to null (unless already changed)
+            if ($programExercise->getProgram() === $this) {
+                $programExercise->setProgram(null);
+            }
+        }
 
         return $this;
     }
