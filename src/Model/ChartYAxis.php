@@ -13,6 +13,11 @@ class ChartYAxis
     public ?string $gridLineColor = null;
     public ?Unit $unit = null;
     public ?bool $opposite = null;
+    public array $labels = [
+        "style" => [
+            "color" => "#fff"
+        ]
+    ];
 
     public function getTitle(): array
     {
@@ -73,7 +78,7 @@ class ChartYAxis
 
         return $this;
     }
-    
+
     public function getUnit(): ?Unit
     {
         return $this->unit;

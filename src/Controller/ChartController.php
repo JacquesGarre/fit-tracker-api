@@ -38,10 +38,6 @@ class ChartController extends AbstractController
             'id' => $exerciseId
         ]);
 
-        // $workouts = $this->entityManager->getRepository(Workout::class)->findBy([
-        //     'user' => $user
-        // ])->where();
-
         $workouts = $this->entityManager->getRepository(Workout::class)
             ->createQueryBuilder('w')
             ->where('w.user = :user')
@@ -152,7 +148,7 @@ class ChartController extends AbstractController
             foreach ($sets as $setID) {
 
                 $serie = new ChartSerie();
-                $serie->setType("column")
+                $serie //->setType("line")
                     ->setUnit($unit)
                     ->setName($unit->getAbbreviation() . " (Set " . $setID . ")")
                     ->setColor($unit->getColor())

@@ -6,7 +6,7 @@ use FitTrackerApi\Entity\Unit;
 
 class ChartSerie
 {
-    public ?string $type = null;
+    //public ?string $type = null;
     public ?string $name = null;
     public ?string $color = null;
     public ?array $data = null;
@@ -15,17 +15,17 @@ class ChartSerie
     public ?int $yAxis = null;
     public ?Unit $unit = null;
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
+    // public function getType(): ?string
+    // {
+    //     return $this->type;
+    // }
 
-    public function setType(string $type): static
-    {
-        $this->type = $type;
+    // public function setType(string $type): static
+    // {
+    //     $this->type = $type;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getName(): ?string
     {

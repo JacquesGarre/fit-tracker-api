@@ -12,6 +12,7 @@ class Chart
     public ?Exercise $exercise = null;
     public string $chartTitle = '';
     public array $legend = ["enabled" => false];
+    public $backgroundColor = 'transparent';
     public array $title = [];
     public array $tooltip = [];
     public array $plotOptions = [];
