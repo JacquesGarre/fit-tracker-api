@@ -4,7 +4,6 @@ namespace FitTrackerApi\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use FitTrackerApi\Entity\User;
 use FitTrackerApi\Entity\Exercise;
 
 class Chart
@@ -150,10 +149,13 @@ class Chart
 
     public function addSeries(ChartSerie $series): static
     {
-        $existingSerie = array_filter($this->series->toArray(), function (ChartSerie $serie) use($series) {
-            return $serie->getName() == $series->getName();
-        });
-        if($existingSerie){
+        $existingSerie = array_filter(
+            $this->series->toArray(),
+            function (ChartSerie $serie) use ($series) {
+                return $serie->getName() == $series->getName();
+            }
+        );
+        if ($existingSerie) {
             return $this;
         }
         $this->series->add($series);
@@ -171,5 +173,4 @@ class Chart
         $this->series = new ArrayCollection();
         return $this;
     }
-
 }

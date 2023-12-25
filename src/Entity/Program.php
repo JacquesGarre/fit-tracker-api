@@ -39,7 +39,12 @@ class Program
     #[Groups('program')]
     private bool $softDeleted = false;
 
-    #[ORM\OneToMany(mappedBy: 'program', targetEntity: ProgramExercise::class, orphanRemoval: true, cascade: ['persist'])]
+    #[ORM\OneToMany(
+        mappedBy: 'program',
+        targetEntity: ProgramExercise::class,
+        orphanRemoval: true,
+        cascade: ['persist']
+    )]
     #[Groups('program')]
     private Collection $programExercises;
 

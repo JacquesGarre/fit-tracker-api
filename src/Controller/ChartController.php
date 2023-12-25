@@ -62,13 +62,17 @@ class ChartController extends AbstractController
 
         $recordSets = [];
         foreach ($workouts as $workout) {
-            $workoutExercise = $workout->getWorkoutExercises()->filter(function (WorkoutExercise $workoutExercise) use ($exercise) {
-                return $workoutExercise->getExercise()->getId() == $exercise->getId();
-            })->first();
-
+            $workoutExercise = $workout->getWorkoutExercises()->filter(
+                function (WorkoutExercise $workoutExercise) use ($exercise) {
+                    return $workoutExercise->getExercise()->getId() == $exercise->getId();
+                }
+            )->first();
             if (!empty($workoutExercise)) {
                 foreach ($workoutExercise->getRecords() as $record) {
-                    $recordSets[$record->getUnit()->getId()][$record->getSetId()][date('d/m/Y H\hi', $workout->getStartedAt()->getTimestamp())] = (float) $record->getValue();
+                    $date = date('d/m/Y H\hi', $workout->getStartedAt()->getTimestamp());
+                    $unitId = $record->getUnit()->getId();
+                    $setId = $record->getSetId();
+                    $recordSets[$unitId][$setId][$date] = (float) $record->getValue();
                 }
             }
         }
@@ -93,9 +97,7 @@ class ChartController extends AbstractController
         sort($sets);
 
         $charts = [];
-
         foreach ($exercise->getUnits() as $unit) {
-
             // Set chart
             $chartTitle = $exercise->getTitle() . ' - ' . $unit->getTitle();
             $chart = new Chart();
@@ -146,7 +148,6 @@ class ChartController extends AbstractController
             $pointPlacement = -0.075 * (count($sets) - 1);
 
             foreach ($sets as $setID) {
-
                 $serie = new ChartSerie();
                 $serie //->setType("line")
                     ->setUnit($unit)

@@ -21,7 +21,6 @@ class AppFixtures extends Fixture
             ->setTickInterval(1);
         $manager->persist($weight);
         $manager->flush();
-        
         $reps = new Unit();
         $reps->setTitle('Repetitions')
             ->setAbbreviation('reps')
@@ -41,7 +40,6 @@ class AppFixtures extends Fixture
             ->setTickInterval(1);
         $manager->persist($distance);
         $manager->flush();
-            
         $speed = new Unit();
         $speed->setTitle('Speed')
             ->setAbbreviation('km/h')
@@ -66,7 +64,11 @@ class AppFixtures extends Fixture
         $exercise->setTitle('Shoulder press')
             ->addUnit($reps)
             ->addUnit($weight)
-            ->setDescription('The overhead press, also known as the shoulder press or military press, is an upper-body weight training exercise in which the trainee presses a weight overhead while seated or standing. It is mainly used to develop the anterior deltoid muscles of the shoulder.')
+            ->setDescription('The overhead press, also known as the shoulder 
+                press or military press, is an upper-body weight training exercise 
+                in which the trainee presses a weight overhead while seated or 
+                standing. It is mainly used to develop the anterior deltoid muscles 
+                of the shoulder.')
             ->setMiniature('shoulderpress.webp');
         $manager->persist($exercise);
         $manager->flush();
@@ -75,7 +77,11 @@ class AppFixtures extends Fixture
         $exercise->setTitle('Curl')
             ->addUnit($reps)
             ->addUnit($weight)
-            ->setDescription('A bicep curl usually starts with the arm in a fully extended position, holding a weight with a supinated (palms facing up) grip. A full repetition consists of bending or "curling" the elbow until it is fully flexed, then slowly lowering the weight to the starting position.')
+            ->setDescription('A bicep curl usually starts with the arm in 
+                a fully extended position, holding a weight with a supinated 
+                (palms facing up) grip. A full repetition consists of bending 
+                or "curling" the elbow until it is fully flexed, then slowly 
+                lowering the weight to the starting position.')
             ->setMiniature('curl.jpg');
         $manager->persist($exercise);
         $manager->flush();
@@ -84,7 +90,13 @@ class AppFixtures extends Fixture
         $exercise->setTitle('Chest press')
             ->addUnit($reps)
             ->addUnit($weight)
-            ->setDescription('The bench press, or chest press, is a weight training exercise where a person presses a weight upwards while lying horizontally on a weight training bench. Although the bench press is a compound movement, the muscles primarily used are the pectoralis major, the anterior deltoids, and the triceps, among other stabilizing muscles. A barbell is generally used to hold the weight, but a pair of dumbbells can also be used.')
+            ->setDescription('The bench press, or chest press, 
+                is a weight training exercise where a person presses a weight 
+                upwards while lying horizontally on a weight training bench. 
+                Although the bench press is a compound movement, the muscles primarily 
+                used are the pectoralis major, the anterior deltoids, and the triceps, 
+                among other stabilizing muscles. A barbell is generally used to hold the weight, 
+                but a pair of dumbbells can also be used.')
             ->setMiniature('chestpress.jpg');
         $manager->persist($exercise);
         $manager->flush();
@@ -94,7 +106,11 @@ class AppFixtures extends Fixture
             ->addUnit($distance)
             ->addUnit($speed)
             ->addUnit($kcal)
-            ->setDescription('A treadmill is a stationary exercise machine that features a walking or running belt designed for indoor cardio exercise. Many treadmills offer a range of speed and incline settings, making them accessible pieces of fitness equipment for individuals at any cardio fitness level.')
+            ->setDescription('A treadmill is a stationary exercise 
+                machine that features a walking or running belt designed 
+                for indoor cardio exercise. Many treadmills offer a range 
+                of speed and incline settings, making them accessible pieces 
+                of fitness equipment for individuals at any cardio fitness level.')
             ->setMiniature('treadmill.jpg');
         $manager->persist($exercise);
         $manager->flush();
