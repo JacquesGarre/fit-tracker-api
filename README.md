@@ -9,6 +9,7 @@
 - git clone
 - cd fit-tracker-api
 - composer install
+- copy .env.example to .env and change vars
 - composer start
 - composer enter
 - php bin/console doctrine:database:create
