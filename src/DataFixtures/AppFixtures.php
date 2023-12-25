@@ -12,18 +12,6 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-
-
-        $reps = new Unit();
-        $reps->setTitle('Repetitions')
-            ->setAbbreviation('reps')
-            ->setColor('#3880ff')
-            ->setMin(0)
-            ->setMax(30)
-            ->setTickInterval(1);
-        $manager->persist($reps);
-        $manager->flush();
-
         $weight = new Unit();
         $weight->setTitle('Weight')
             ->setAbbreviation('kgs')
@@ -32,6 +20,16 @@ class AppFixtures extends Fixture
             ->setMax(200)
             ->setTickInterval(1);
         $manager->persist($weight);
+        $manager->flush();
+        
+        $reps = new Unit();
+        $reps->setTitle('Repetitions')
+            ->setAbbreviation('reps')
+            ->setColor('#3880ff')
+            ->setMin(0)
+            ->setMax(30)
+            ->setTickInterval(1);
+        $manager->persist($reps);
         $manager->flush();
 
         $distance = new Unit();
@@ -62,16 +60,6 @@ class AppFixtures extends Fixture
             ->setMax(1000)
             ->setTickInterval(1);
         $manager->persist($kcal);
-        $manager->flush();
-        
-        $minPerKm = new Unit();
-        $minPerKm->setTitle('Rythm')
-            ->setAbbreviation('min/km')
-            ->setColor('#5260ff')
-            ->setMin(0)
-            ->setMax(1000)
-            ->setTickInterval(1);
-        $manager->persist($minPerKm);
         $manager->flush();
 
         $exercise = new Exercise();
@@ -106,7 +94,6 @@ class AppFixtures extends Fixture
             ->addUnit($distance)
             ->addUnit($speed)
             ->addUnit($kcal)
-            ->addUnit($minPerKm)
             ->setDescription('A treadmill is a stationary exercise machine that features a walking or running belt designed for indoor cardio exercise. Many treadmills offer a range of speed and incline settings, making them accessible pieces of fitness equipment for individuals at any cardio fitness level.')
             ->setMiniature('treadmill.jpg');
         $manager->persist($exercise);
