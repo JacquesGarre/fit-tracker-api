@@ -7,32 +7,52 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\WorkoutRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
 
 #[ORM\Entity(repositoryClass: WorkoutRepository::class)]
-#[ApiResource]
+#[ApiResource(normalizationContext: ['groups' => ['workout', 'exercise', 'program']])]
+#[ApiFilter(SearchFilter::class, properties: ['status' => 'exact'])]
+#[ApiFilter(DateFilter::class, properties: ['plannedAt'])]
 class Workout
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('workout')]
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'workouts')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('workout')]
     private ?Program $program = null;
 
     #[ORM\ManyToOne(inversedBy: 'workouts')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('workout')]
     private ?User $user = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups('workout')]
     private ?\DateTimeImmutable $startedAt = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups('workout')]
     private ?\DateTimeImmutable $endedAt = null;
 
     #[ORM\OneToMany(mappedBy: 'workout', targetEntity: WorkoutExercise::class, orphanRemoval: true)]
+    #[Groups('workout')]
     private Collection $workoutExercises;
+
+    #[ORM\Column(length: 255)]
+    #[Groups('workout')]
+    private string $status = 'planned';
+
+    #[ORM\Column(nullable: true)]
+    #[Groups('workout')]
+    private ?\DateTimeImmutable $plannedAt = null;
 
     public function __construct()
     {
@@ -118,6 +138,30 @@ class Workout
                 $workoutExercise->setWorkout(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getPlannedAt(): ?\DateTimeImmutable
+    {
+        return $this->plannedAt;
+    }
+
+    public function setPlannedAt(?\DateTimeImmutable $plannedAt): static
+    {
+        $this->plannedAt = $plannedAt;
 
         return $this;
     }

@@ -5,21 +5,25 @@ namespace FitTrackerApi\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\RecordRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RecordRepository::class)]
-#[ApiResource]
+#[ApiResource(normalizationContext: ['groups' => ['workout']])]
 class Record
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('workout')]
     private ?int $id = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups('workout')]
     private ?Unit $unit = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('workout')]
     private ?string $value = null;
 
     #[ORM\ManyToOne(inversedBy: 'records')]
@@ -32,6 +36,10 @@ class Record
     #[ORM\ManyToOne(inversedBy: 'records')]
     #[ORM\JoinColumn(nullable: false)]
     private ?WorkoutExercise $workoutExercise = null;
+
+    #[ORM\Column]
+    #[Groups('workout')]
+    private ?int $setId = null;
 
     public function getId(): ?int
     {
@@ -94,6 +102,18 @@ class Record
     public function setWorkoutExercise(?WorkoutExercise $workoutExercise): static
     {
         $this->workoutExercise = $workoutExercise;
+
+        return $this;
+    }
+
+    public function getSetId(): ?int
+    {
+        return $this->setId;
+    }
+
+    public function setSetId(int $setId): static
+    {
+        $this->setId = $setId;
 
         return $this;
     }
