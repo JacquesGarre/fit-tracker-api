@@ -43,12 +43,15 @@ class Exercise
     private Collection $programExercises;
 
     #[ORM\Column(nullable: true)]
+    #[Groups('exercise')]
     private ?int $difficulty = null;
 
     #[ORM\ManyToMany(targetEntity: MuscleGroup::class, inversedBy: 'exercises')]
+    #[Groups('exercise')]
     private Collection $muscleGroups;
 
     #[ORM\ManyToMany(targetEntity: ExerciseType::class, inversedBy: 'exercises')]
+    #[Groups('exercise')]
     private Collection $type;
 
     public function __construct()

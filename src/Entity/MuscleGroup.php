@@ -7,9 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FitTrackerApi\Repository\MuscleGroupRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: MuscleGroupRepository::class)]
-#[ApiResource]
+#[ApiResource(normalizationContext: ['groups' => ['exercise', 'program', 'workout']])]
 class MuscleGroup
 {
     #[ORM\Id]
@@ -18,6 +19,7 @@ class MuscleGroup
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups('exercise')]
     private ?string $title = null;
 
     #[ORM\ManyToMany(targetEntity: Exercise::class, mappedBy: 'muscleGroups')]
