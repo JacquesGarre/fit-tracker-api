@@ -9,6 +9,8 @@
 - git clone
 - cd fit-tracker-api
 - composer install
+- copy .env.example to .env and change vars
+- php bin/console lexik:jwt:generate-keypair
 - composer start
 - composer enter
 - php bin/console doctrine:database:create
