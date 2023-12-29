@@ -42,11 +42,22 @@ class Exercise
     #[ORM\OneToMany(mappedBy: 'exercise', targetEntity: ProgramExercise::class, orphanRemoval: true)]
     private Collection $programExercises;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $difficulty = null;
+
+    #[ORM\ManyToMany(targetEntity: MuscleGroup::class, inversedBy: 'exercises')]
+    private Collection $muscleGroups;
+
+    #[ORM\ManyToMany(targetEntity: ExerciseType::class, inversedBy: 'exercises')]
+    private Collection $type;
+
     public function __construct()
     {
         $this->units = new ArrayCollection();
         $this->workoutExercises = new ArrayCollection();
         $this->programExercises = new ArrayCollection();
+        $this->muscleGroups = new ArrayCollection();
+        $this->type = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,6 +181,66 @@ class Exercise
                 $programExercise->setExercise(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDifficulty(): ?int
+    {
+        return $this->difficulty;
+    }
+
+    public function setDifficulty(?int $difficulty): static
+    {
+        $this->difficulty = $difficulty;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MuscleGroup>
+     */
+    public function getMuscleGroups(): Collection
+    {
+        return $this->muscleGroups;
+    }
+
+    public function addMuscleGroup(MuscleGroup $muscleGroup): static
+    {
+        if (!$this->muscleGroups->contains($muscleGroup)) {
+            $this->muscleGroups->add($muscleGroup);
+        }
+
+        return $this;
+    }
+
+    public function removeMuscleGroup(MuscleGroup $muscleGroup): static
+    {
+        $this->muscleGroups->removeElement($muscleGroup);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ExerciseType>
+     */
+    public function getType(): Collection
+    {
+        return $this->type;
+    }
+
+    public function addType(ExerciseType $type): static
+    {
+        if (!$this->type->contains($type)) {
+            $this->type->add($type);
+        }
+
+        return $this;
+    }
+
+    public function removeType(ExerciseType $type): static
+    {
+        $this->type->removeElement($type);
 
         return $this;
     }

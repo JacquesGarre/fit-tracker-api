@@ -1,0 +1,802 @@
+[
+    {
+        "title": "Shoulder Press",
+        "description": "A shoulder press is a weight training exercise in which a weight is pressed straight upwards from the shoulders, typically using dumbbells or a barbell.",
+        "difficulty": 2,
+        "muscleGroup": "Shoulders",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Bicep Curl",
+        "description": "A bicep curl usually starts with the arm in a fully extended position, holding a weight with a supinated (palms facing up) grip. A full repetition consists of bending or 'curling' the elbow until it is fully flexed, then slowly lowering the weight to the starting position.",
+        "difficulty": 1,
+        "muscleGroup": "Biceps",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Leg Press",
+        "description": "The leg press is a compound weight training exercise in which the individual pushes a weight or resistance away from them using their legs. It targets the quadriceps, hamstrings, and glutes.",
+        "difficulty": 3,
+        "muscleGroup": "Legs",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Push-up",
+        "description": "A push-up is a common bodyweight exercise in which a person lowers their body to the ground and then pushes it back up. It primarily works the chest, shoulders, and triceps.",
+        "difficulty": 1,
+        "muscleGroup": "Chest",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Deadlift",
+        "description": "The deadlift is a weight training exercise in which a loaded barbell or bar is lifted off the ground to the level of the hips, then lowered back to the ground.",
+        "difficulty": 3,
+        "muscleGroup": "Back",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Plank",
+        "description": "The plank is an isometric core strength exercise that involves maintaining a position similar to a push-up for an extended period, with the body held in a straight line from head to heels.",
+        "difficulty": 1,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "time"
+    },
+    {
+        "title": "Lat Pulldown",
+        "description": "The lat pulldown is a strength training exercise that targets the upper back. It involves pulling a bar or handle attachment down to the upper chest or behind the neck.",
+        "difficulty": 2,
+        "muscleGroup": "Back",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Squat",
+        "description": "The squat is a lower body exercise that involves the muscles of the thighs, hips, and buttocks. It is a fundamental movement for building strength in the legs.",
+        "difficulty": 3,
+        "muscleGroup": "Legs",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Tricep Dip",
+        "description": "Tricep dips are a bodyweight exercise that targets the triceps. It involves lowering and raising the body by bending and straightening the arms.",
+        "difficulty": 2,
+        "muscleGroup": "Triceps",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Chest Fly",
+        "description": "The chest fly is a strength training exercise that works the chest muscles. It is typically performed using dumbbells or a machine.",
+        "difficulty": 2,
+        "muscleGroup": "Chest",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Hammer Curl",
+        "description": "Hammer curls are a variation of the bicep curl that targets the brachialis muscle. The exercise involves a neutral grip with the palms facing each other.",
+        "difficulty": 1,
+        "muscleGroup": "Biceps",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Lunges",
+        "description": "Lunges are a lower body exercise that involves stepping forward with one leg and lowering the body until both knees are bent at a 90-degree angle.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Seated Row",
+        "description": "The seated row is a machine-based exercise that targets the muscles of the upper back. It involves pulling a handle toward the body while seated.",
+        "difficulty": 2,
+        "muscleGroup": "Back",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Burpees",
+        "description": "Burpees are a full-body exercise that combines squats, push-ups, and jumps. It is an excellent cardiovascular and strength-building exercise.",
+        "difficulty": 3,
+        "muscleGroup": "Full Body",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Reverse Crunch",
+        "description": "The reverse crunch is an abdominal exercise that targets the lower abdominal muscles. It involves lifting the hips off the ground toward the chest.",
+        "difficulty": 1,
+        "muscleGroup": "Abs",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Calf Raise",
+        "description": "Calf raises are an isolation exercise for the calves. It involves lifting the heels off the ground to work the gastrocnemius and soleus muscles.",
+        "difficulty": 1,
+        "muscleGroup": "Calves",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Front Squat",
+        "description": "The front squat is a variation of the squat that involves holding the barbell in front of the shoulders. It places more emphasis on the quadriceps.",
+        "difficulty": 3,
+        "muscleGroup": "Legs",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Pull-up",
+        "description": "A pull-up is an upper-body exercise that targets the muscles of the back, particularly the latissimus dorsi. It involves lifting the body using an overhead bar.",
+        "difficulty": 3,
+        "muscleGroup": "Back",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Russian Twist",
+        "description": "The Russian twist is an abdominal exercise that involves twisting the torso from side to side while holding a weight or using bodyweight for resistance.",
+        "difficulty": 2,
+        "muscleGroup": "Abs",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Leg Curl",
+        "description": "The leg curl is a machine-based exercise that targets the hamstrings. It involves curling the legs toward the buttocks against resistance.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Mountain Climbers",
+        "description": "Mountain climbers are a dynamic full-body exercise that involves bringing the knees toward the chest in a running motion. It is excellent for cardio and core strength.",
+        "difficulty": 2,
+        "muscleGroup": "Full Body",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Skull Crushers",
+        "description": "Skull crushers, or lying tricep extensions, are a weight training exercise that targets the triceps. It involves lowering the weight toward the forehead and extending the arms.",
+        "difficulty": 2,
+        "muscleGroup": "Triceps",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Box Jumps",
+        "description": "Box jumps are a plyometric exercise that involves jumping onto a box or platform. It works the muscles of the legs and improves explosive power.",
+        "difficulty": 3,
+        "muscleGroup": "Legs",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Hanging Leg Raise",
+        "description": "The hanging leg raise is an advanced abdominal exercise that involves hanging from a bar and lifting the legs toward the chest. It targets the lower abs.",
+        "difficulty": 3,
+        "muscleGroup": "Abs",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Arnold Press",
+        "description": "The Arnold press is a shoulder exercise that involves a twisting motion during the lift. It targets the front and side delts, as well as the trapezius.",
+        "difficulty": 2,
+        "muscleGroup": "Shoulders",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Dumbbell Row",
+        "description": "The dumbbell row is a back exercise that involves bending at the hips and pulling a dumbbell toward the hip. It targets the lats and rhomboids.",
+        "difficulty": 2,
+        "muscleGroup": "Back",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Side Plank",
+        "description": "The side plank is an isometric exercise that targets the muscles of the core, particularly the obliques. It involves supporting the body on one forearm and the side of the foot.",
+        "difficulty": 1,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "time"
+    },
+    {
+        "title": "Step-ups",
+        "description": "Step-ups are a lower body exercise that involves stepping onto a raised platform. It targets the muscles of the legs and glutes.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Bodyweight",
+        "unit": "time"
+    },
+    {
+        "title": "Incline Bench Press",
+        "description": "The incline bench press is a variation of the bench press that targets the upper chest. It involves pressing a weight while on an inclined bench.",
+        "difficulty": 3,
+        "muscleGroup": "Chest",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Face Pulls",
+        "description": "Face pulls are a shoulder exercise that targets the rear delts and upper traps. It involves pulling a cable attachment toward the face.",
+        "difficulty": 2,
+        "muscleGroup": "Shoulders",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Leg Extension",
+        "description": "The leg extension is a machine-based exercise that targets the quadriceps. It involves extending the legs against resistance.",
+        "difficulty": 1,
+        "muscleGroup": "Legs",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Dips",
+        "description": "Dips are a compound exercise that targets the chest, triceps, and shoulders. It involves lowering and raising the body using parallel bars.",
+        "difficulty": 2,
+        "muscleGroup": "Chest",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Kettlebell Swing",
+        "description": "The kettlebell swing is a dynamic full-body exercise that involves swinging a kettlebell between the legs and up to chest height. It targets the hips, glutes, and core.",
+        "difficulty": 2,
+        "muscleGroup": "Full Body",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Romanian Deadlift",
+        "description": "The Romanian deadlift is a variation of the deadlift that involves hinging at the hips and lowering the barbell while keeping the legs relatively straight. It targets the hamstrings and glutes.",
+        "difficulty": 3,
+        "muscleGroup": "Legs",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Reverse Fly",
+        "description": "The reverse fly is a back exercise that targets the rear delts and upper back. It involves raising the arms out to the sides while bent over.",
+        "difficulty": 2,
+        "muscleGroup": "Back",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Standing Calf Raise",
+        "description": "Standing calf raises are a calf exercise that involves lifting the heels off the ground while standing. It targets the gastrocnemius muscles.",
+        "difficulty": 1,
+        "muscleGroup": "Calves",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Lateral Raise",
+        "description": "Lateral raises are a shoulder exercise that targets the side delts. It involves lifting the arms out to the sides while holding weights.",
+        "difficulty": 1,
+        "muscleGroup": "Shoulders",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Leg Raise",
+        "description": "The leg raise is an abdominal exercise that involves lying on the back and lifting the legs toward the ceiling. It targets the lower abs.",
+        "difficulty": 1,
+        "muscleGroup": "Abs",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "T-Bar Row",
+        "description": "The T-bar row is a back exercise that involves lifting a loaded barbell while bent over at the hips. It targets the lats and middle back.",
+        "difficulty": 2,
+        "muscleGroup": "Back",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Box Squat",
+        "description": "The box squat is a squat variation that involves sitting back onto a box or bench before standing back up. It targets the hips and glutes.",
+        "difficulty": 3,
+        "muscleGroup": "Legs",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Medicine Ball Slam",
+        "description": "The medicine ball slam is a full-body exercise that involves lifting a medicine ball overhead and forcefully slamming it to the ground. It is excellent for power and cardiovascular conditioning.",
+        "difficulty": 2,
+        "muscleGroup": "Full Body",
+        "type": "Medicine Ball",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Chin-Up",
+        "description": "A chin-up is an upper-body exercise where the body is pulled up using an overhand grip. It targets the back, biceps, and shoulders.",
+        "difficulty": 3,
+        "muscleGroup": "Back",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Plank Row",
+        "description": "A plank row is a combination exercise that involves a plank position while performing rows with dumbbells. It targets the core and back muscles.",
+        "difficulty": 2,
+        "muscleGroup": "Core, Back",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Bicycle Crunch",
+        "description": "The bicycle crunch is a core exercise that involves a twisting motion, bringing the elbow toward the opposite knee in a bicycle-pedaling motion.",
+        "difficulty": 1,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "time, reps"
+    },
+    {
+        "title": "Seated Leg Press",
+        "description": "The seated leg press is a machine-based exercise that targets the muscles of the lower body, including the quadriceps, hamstrings, and glutes.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Overhead Press",
+        "description": "The overhead press is a compound exercise that involves pressing a weight overhead. It primarily targets the shoulders and triceps.",
+        "difficulty": 2,
+        "muscleGroup": "Shoulders",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Romanian Deadlift",
+        "description": "The Romanian deadlift is a variation of the deadlift that emphasizes the hamstrings and glutes. It involves hinging at the hips while keeping the legs relatively straight.",
+        "difficulty": 3,
+        "muscleGroup": "Hamstrings, Glutes",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Dips",
+        "description": "Dips are a compound exercise that targets the chest, shoulders, and triceps. They are performed by lowering and raising the body between parallel bars.",
+        "difficulty": 2,
+        "muscleGroup": "Chest, Shoulders, Triceps",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Box Jump",
+        "description": "The box jump is a plyometric exercise that involves jumping onto a box or platform. It targets the lower body and improves explosive power.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Side Plank",
+        "description": "The side plank is a core exercise that involves supporting the body on one arm and the side of the foot. It targets the obliques and improves core stability.",
+        "difficulty": 1,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "time"
+    },
+    {
+        "title": "Cable Curl",
+        "description": "The cable curl is a bicep exercise performed using a cable machine. It provides constant tension on the biceps throughout the range of motion.",
+        "difficulty": 2,
+        "muscleGroup": "Biceps",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Reverse Lunge",
+        "description": "The reverse lunge is a lower-body exercise that involves stepping backward into a lunge position. It targets the quadriceps, hamstrings, and glutes.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Face Pull",
+        "description": "The face pull is a shoulder exercise that targets the rear deltoids and upper traps. It is often performed using a cable machine with a rope attachment.",
+        "difficulty": 2,
+        "muscleGroup": "Shoulders",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Burpee",
+        "description": "The burpee is a full-body exercise that combines a squat, plank, push-up, and jump. It is an effective cardiovascular and strength-building exercise.",
+        "difficulty": 3,
+        "muscleGroup": "Full Body",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Leg Curl",
+        "description": "The leg curl is an isolation exercise that targets the hamstrings. It is commonly performed on a machine where the heels are lifted toward the glutes.",
+        "difficulty": 2,
+        "muscleGroup": "Hamstrings",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Inverted Row",
+        "description": "The inverted row is a bodyweight exercise that targets the muscles of the upper back. It is performed by pulling the body up to a bar while lying on the ground.",
+        "difficulty": 2,
+        "muscleGroup": "Back",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Skater Squat",
+        "description": "The skater squat is a challenging single-leg exercise that targets the quadriceps and glutes. It involves squatting on one leg while extending the other leg backward.",
+        "difficulty": 3,
+        "muscleGroup": "Legs",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Hollow Body Hold",
+        "description": "The hollow body hold is a core exercise that involves lying on the back and lifting the legs and upper body off the ground, creating a 'hollow' position.",
+        "difficulty": 2,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Seated Shoulder Press",
+        "description": "The seated shoulder press is a variation of the overhead press performed while seated. It targets the shoulders and triceps.",
+        "difficulty": 2,
+        "muscleGroup": "Shoulders",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Kettlebell Swing",
+        "description": "The kettlebell swing is a dynamic exercise that targets the hips, glutes, and hamstrings. It involves swinging a kettlebell between the legs and then explosively swinging it upward.",
+        "difficulty": 2,
+        "muscleGroup": "Hips, Glutes",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Reverse Crunch",
+        "description": "The reverse crunch is a core exercise that involves lifting the hips off the ground toward the chest. It targets the lower abdominal muscles.",
+        "difficulty": 1,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Leg Raise",
+        "description": "The leg raise is a core exercise that involves lying on the back and lifting the legs toward the ceiling. It targets the lower abdominal muscles.",
+        "difficulty": 1,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Chest Press Machine",
+        "description": "The chest press machine is a resistance machine that targets the chest muscles. It involves pushing weights forward while seated on the machine.",
+        "difficulty": 2,
+        "muscleGroup": "Chest",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Single-Leg Deadlift",
+        "description": "The single-leg deadlift is a balance and stability exercise that targets the hamstrings and glutes. It involves hinging at the hips while lifting one leg off the ground.",
+        "difficulty": 3,
+        "muscleGroup": "Hamstrings, Glutes",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Dumbbell Renegade Row",
+        "description": "The dumbbell renegade row is a full-body exercise that involves performing a row with dumbbells in a plank position. It targets the back, shoulders, and core.",
+        "difficulty": 3,
+        "muscleGroup": "Back, Shoulders, Core",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Russian Twist",
+        "description": "The Russian twist is a core exercise that involves rotating the torso from side to side while holding a weight or using bodyweight.",
+        "difficulty": 1,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Medicine Ball Slam",
+        "description": "The medicine ball slam is a power exercise that involves lifting a medicine ball overhead and forcefully slamming it onto the ground. It targets the entire body.",
+        "difficulty": 2,
+        "muscleGroup": "Full Body",
+        "type": "Medicine Ball",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Lat Pulldown",
+        "description": "The lat pulldown is a strength training exercise that targets the upper back. It involves pulling a bar or handle attachment down to the upper chest or behind the neck.",
+        "difficulty": 2,
+        "muscleGroup": "Back",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Walking Lunge",
+        "description": "The walking lunge is a lower-body exercise that involves stepping forward into a lunge position and alternating legs. It targets the quadriceps, hamstrings, and glutes.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Bent Over Reverse Fly",
+        "description": "The bent-over reverse fly is a back exercise that targets the rear deltoids and upper back. It is performed by bending over and lifting dumbbells to the sides.",
+        "difficulty": 2,
+        "muscleGroup": "Back",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Jumping Jacks",
+        "description": "Jumping jacks are a cardiovascular exercise that involves jumping while spreading the legs and arms. They are effective for warming up the body and improving endurance.",
+        "difficulty": 1,
+        "muscleGroup": "Full Body",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Seated Leg Curl",
+        "description": "The seated leg curl is a machine-based exercise that targets the hamstrings. It involves curling the legs toward the glutes while seated on the machine.",
+        "difficulty": 2,
+        "muscleGroup": "Hamstrings",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Battle Rope Waves",
+        "description": "Battle rope waves are a high-intensity cardiovascular exercise that involves creating waves with heavy ropes. It targets the arms, shoulders, and core.",
+        "difficulty": 2,
+        "muscleGroup": "Arms, Shoulders, Core",
+        "type": "Battle Rope",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Pull-Up Bar Hang",
+        "description": "The pull-up bar hang is a simple exercise that involves hanging from a pull-up bar. It helps improve grip strength and decompress the spine.",
+        "difficulty": 1,
+        "muscleGroup": "Forearms, Grip",
+        "type": "Bodyweight",
+        "unit": "time"
+    },
+    {
+        "title": "Leg Press Machine",
+        "description": "The leg press machine is a resistance machine that targets the muscles of the lower body. It involves pushing a weight away from the body using the legs.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Machine",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Dumbbell Side Lateral Raise",
+        "description": "The dumbbell side lateral raise is a shoulder exercise that targets the lateral deltoids. It involves lifting dumbbells to the sides while keeping the arms straight.",
+        "difficulty": 1,
+        "muscleGroup": "Shoulders",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Dumbbell Goblet Squat",
+        "description": "The dumbbell goblet squat is a squat variation that involves holding a dumbbell at chest level. It targets the quadriceps, hamstrings, and glutes.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Free Weight",
+        "unit": "weight, reps"
+    },
+    {
+        "title": "Boxing Jab Cross",
+        "description": "The boxing jab cross is a cardiovascular exercise that simulates punching movements. It engages the arms, shoulders, and core while providing a cardio workout.",
+        "difficulty": 2,
+        "muscleGroup": "Arms, Shoulders, Core",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Seated Tricep Dip",
+        "description": "The seated tricep dip is a tricep exercise performed on a bench or chair. It involves dipping the body downward to target the triceps.",
+        "difficulty": 2,
+        "muscleGroup": "Triceps",
+        "type": "Bodyweight",
+        "unit": "reps"
+    },
+    {
+        "title": "Reverse Plank",
+        "description": "The reverse plank is a core exercise that involves holding a plank position while facing upward. It targets the core and improves overall stability.",
+        "difficulty": 1,
+        "muscleGroup": "Core",
+        "type": "Bodyweight",
+        "unit": "time"
+    },
+    {
+        "title": "Dumbbell Front Raise",
+        "description": "The dumbbell front raise is a shoulder exercise that targets the front deltoids. It involves lifting dumbbells to the front while keeping the arms straight.",
+        "difficulty": 1,
+        "muscleGroup": "Shoulders",
+        "type": "Free Weight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Running",
+        "description": "Running is a classic cardiovascular exercise that involves continuous forward motion at a moderate to high intensity. It improves cardiovascular health and burns calories.",
+        "difficulty": 2,
+        "muscleGroup": "Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Cycling",
+        "description": "Cycling is a low-impact cardio exercise that can be done outdoors or on a stationary bike. It targets the lower body muscles and improves endurance.",
+        "difficulty": 2,
+        "muscleGroup": "Legs, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Jump Rope",
+        "description": "Jump rope is a high-intensity cardiovascular exercise that involves jumping over a rope repeatedly. It improves coordination, agility, and cardiovascular fitness.",
+        "difficulty": 2,
+        "muscleGroup": "Full Body",
+        "type": "Cardiovascular",
+        "unit": "time"
+    },
+    {
+        "title": "Rowing",
+        "description": "Rowing is a full-body cardio exercise that can be done on a rowing machine. It targets the back, legs, and arms while providing an effective cardiovascular workout.",
+        "difficulty": 2,
+        "muscleGroup": "Back, Legs, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Swimming",
+        "description": "Swimming is a low-impact full-body workout that engages multiple muscle groups. It provides cardiovascular benefits and is easy on the joints.",
+        "difficulty": 2,
+        "muscleGroup": "Full Body, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, time"
+    },
+    {
+        "title": "Elliptical Training",
+        "description": "Elliptical training is a low-impact cardio exercise that mimics the motion of running without the impact on joints. It targets the legs and arms.",
+        "difficulty": 2,
+        "muscleGroup": "Legs, Arms, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Sprinting",
+        "description": "Sprinting involves short bursts of maximum effort running. It is an excellent way to improve cardiovascular fitness, leg strength, and speed.",
+        "difficulty": 3,
+        "muscleGroup": "Legs, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Mountain Climbers",
+        "description": "Mountain climbers are a dynamic bodyweight exercise that involves bringing the knees toward the chest in a plank position. They provide a cardio challenge and engage the core.",
+        "difficulty": 2,
+        "muscleGroup": "Core, Cardio",
+        "type": "Bodyweight",
+        "unit":"time, reps"
+    },
+    {
+        "title": "Treadmill Incline Walking",
+        "description": "Walking on a treadmill with an incline increases the intensity and engages the muscles in the legs and glutes. It's a lower-impact cardio option.",
+        "difficulty": 1,
+        "muscleGroup": "Legs, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Stair Climbing",
+        "description": "Stair climbing is a simple yet effective cardio exercise. It targets the legs and glutes while providing a cardiovascular workout.",
+        "difficulty": 2,
+        "muscleGroup": "Legs, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Sled Push",
+        "description": "The sled push is a strength and conditioning exercise where you push a weighted sled forward. It targets the legs, hips, and cardiovascular system.",
+        "difficulty": 3,
+        "muscleGroup": "Legs, Cardio",
+        "type": "Sled",
+        "unit": "reps, time, weight"
+    },
+    {
+        "title": "Battle Rope Waves",
+        "description": "Battle rope waves are a high-intensity cardiovascular exercise that involves creating waves with heavy ropes. It targets the arms, shoulders, and core.",
+        "difficulty": 2,
+        "muscleGroup": "Arms, Shoulders, Core",
+        "type": "Battle Rope",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Hiking",
+        "description": "Hiking is an outdoor cardio activity that involves walking on trails or uneven terrain. It engages the legs, core, and provides a refreshing outdoor experience.",
+        "difficulty": 2,
+        "muscleGroup": "Legs, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Box Jump",
+        "description": "The box jump is a plyometric exercise that involves jumping onto a box or platform. It targets the lower body and improves explosive power.",
+        "difficulty": 2,
+        "muscleGroup": "Legs",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Burpee",
+        "description": "The burpee is a full-body exercise that combines a squat, plank, push-up, and jump. It is an effective cardiovascular and strength-building exercise.",
+        "difficulty": 3,
+        "muscleGroup": "Full Body",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Medicine Ball Slam",
+        "description": "The medicine ball slam is a power exercise that involves lifting a medicine ball overhead and forcefully slamming it onto the ground. It targets the entire body.",
+        "difficulty": 2,
+        "muscleGroup": "Full Body",
+        "type": "Medicine Ball",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Jumping Jacks",
+        "description": "Jumping jacks are a cardiovascular exercise that involves jumping while spreading the legs and arms. They are effective for warming up the body and improving endurance.",
+        "difficulty": 1,
+        "muscleGroup": "Full Body",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Boxing Jab Cross",
+        "description": "The boxing jab cross is a cardiovascular exercise that simulates punching movements. It engages the arms, shoulders, and core while providing a cardio workout.",
+        "difficulty": 2,
+        "muscleGroup": "Arms, Shoulders, Core",
+        "type": "Bodyweight",
+        "unit": "reps, time"
+    },
+    {
+        "title": "Treadmill",
+        "description": "Treadmill running or walking is a versatile cardio exercise that can be adjusted for speed and incline. It provides a controlled environment for cardiovascular training.",
+        "difficulty": 2,
+        "muscleGroup": "Legs, Cardio",
+        "type": "Cardiovascular",
+        "unit": "distance, speed, time, kcals"
+    }
+]
