@@ -6,3 +6,8 @@ get_chart:
     path: '/api/charts/{exerciseId}'
     controller: 'FitTrackerApi\Controller\ChartController::getChart'
     methods: ['GET']
+
+privacy:
+    path: '/privacy'
+    controller: 'FitTrackerApi\Controller\PrivacyController::index'
+    methods: ['GET']
