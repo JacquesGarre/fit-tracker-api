@@ -161,7 +161,15 @@ class AppFixtures extends Fixture
         $manager->persist($cardio);
         $manager->flush();
 
+        $innerthighs = new MuscleGroup();
+        $innerthighs->setTitle('Inner thighs');
+        $manager->persist($innerthighs);
+        $manager->flush();
 
+        $outerthighs = new MuscleGroup();
+        $outerthighs->setTitle('Outer thighs');
+        $manager->persist($outerthighs);
+        $manager->flush();
 
         $freeweight = new ExerciseType();
         $freeweight->setTitle('Free Weight');

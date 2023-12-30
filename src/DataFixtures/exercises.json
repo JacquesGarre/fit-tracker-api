@@ -798,5 +798,12 @@
         "muscleGroup": "Legs, Cardio",
         "type": "Cardiovascular",
         "unit": "distance, speed, time, kcals"
+    },
+    {
+        "title": "Abduction/Adduction Machine",
+        "description": "The abduction/adduction machine is a resistance machine designed to target the muscles responsible for moving the legs away from or toward the body's midline. Abduction involves moving the legs outward, away from the center, while adduction involves moving the legs inward, toward the midline. This exercise is effective for strengthening the muscles of the inner and outer thighs.",
+        "difficulty": 2,
+        "muscleGroup": "Inner Thighs, Outer Thighs",
+        "type": "Machine"
     }
 ]
