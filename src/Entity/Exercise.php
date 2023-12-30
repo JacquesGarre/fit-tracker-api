@@ -11,7 +11,7 @@ use FitTrackerApi\Repository\ExerciseRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ExerciseRepository::class)]
-#[ApiResource(normalizationContext: ['groups' => ['exercise', 'program', 'workout']])]
+#[ApiResource(normalizationContext: ['groups' => ['exercise', 'program', 'workout']], order: ['title' => 'ASC'])]
 class Exercise
 {
     #[ORM\Id]
