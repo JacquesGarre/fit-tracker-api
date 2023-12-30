@@ -11,6 +11,7 @@ api_platform:
         jsonopenapi: ['application/vnd.openapi+json']
         html: ['text/html']
     defaults:
+        pagination_enabled: false
         stateless: true
         extra_properties:
             standard_put: true
