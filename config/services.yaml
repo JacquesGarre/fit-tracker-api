@@ -47,3 +47,11 @@ services:
                 event: 'prePersist'
                 priority: 500
                 connection: 'default'
+
+    FitTrackerApi\EventListener\ProgramEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'postUpdate'
+                priority: 500
+                connection: 'default'
