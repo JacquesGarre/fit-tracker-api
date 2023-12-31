@@ -2,7 +2,12 @@ auth:
     path: /api/auth
     methods: ['POST']
 
-get_chart:
-    path: '/api/charts/{exerciseId}'
-    controller: 'FitTrackerApi\Controller\ChartController::getChart'
+get_chart_by_exercise:
+    path: '/api/charts/exercise/{exerciseId}'
+    controller: 'FitTrackerApi\Controller\ChartController::getChartByExercise'
+    methods: ['GET']
+
+get_chart_by_user:
+    path: '/api/charts/user-charts'
+    controller: 'FitTrackerApi\Controller\ChartController::getChartByUser'
     methods: ['GET']
