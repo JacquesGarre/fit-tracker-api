@@ -34,6 +34,15 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
 
     public function authenticate(Request $request): Passport
     {
+        if(strpos($request->getPathInfo(), '/api/') === false){
+            return new SelfValidatingPassport(
+                new UserBadge('', function () {
+                    return new User();
+                })
+            );
+        }
+        
+
         $apiToken = $request->headers->get('X-API-KEY');
         if (null === $apiToken) {
             throw new CustomUserMessageAuthenticationException('No api key provided');

@@ -11,3 +11,13 @@ get_chart_by_user:
     path: '/api/charts/user-charts'
     controller: 'FitTrackerApi\Controller\ChartController::getChartByUser'
     methods: ['GET']
+
+privacy:
+    path: '/privacy'
+    controller: 'FitTrackerApi\Controller\PrivacyController::index'
+    methods: ['GET']
+  
+delete_my_account:
+    path: '/delete-my-account'
+    controller: 'FitTrackerApi\Controller\DeleteInstructionsController::index'
+    methods: ['GET']

@@ -35,6 +35,7 @@ security:
             jwt: ~
 
     access_control:
+        - { path: ^/privacy$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
         - { path: ^/api$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
         - { path: ^/api/auth, roles: PUBLIC_ACCESS }
         - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: ['POST'] }
