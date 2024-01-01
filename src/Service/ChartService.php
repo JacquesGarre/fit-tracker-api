@@ -138,7 +138,7 @@ class ChartService
                 ->setTitle(["text" => ''])
                 ->setMax($max)
                 ->setMin(0)
-                ->setTickInterval($unit->getTickInterval())
+                ->setTickInterval(round($max/10))
                 ->setGridLineColor("transparent");
             $chart->addYaxi($yAxis);
 
@@ -151,7 +151,7 @@ class ChartService
                 $serie //->setType("line")
                     ->setUnit($unit)
                     ->setName($unit->getAbbreviation() . " (Set " . $setID . ")")
-                    ->setColor($unit->getColor())
+                    ->setColor('#2dd36f')
                     ->setPointPadding($pointPadding)
                     ->setPointPlacement($pointPlacement)
                     ->setYAxis(0);

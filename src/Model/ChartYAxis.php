@@ -13,9 +13,11 @@ class ChartYAxis
     public ?string $gridLineColor = null;
     public ?Unit $unit = null;
     public ?bool $opposite = null;
+    public int $tickAmount = 6;
     public array $labels = [
         "style" => [
-            "color" => "#fff"
+            "color" => "#fff",
+            "fontSize" => "10px",
         ]
     ];
 
