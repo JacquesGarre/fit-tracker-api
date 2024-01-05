@@ -147,6 +147,7 @@ class ChartService
             $pointPlacement = -0.075 * (count($sets) - 1);
 
             foreach ($sets as $setID) {
+
                 $serie = new ChartSerie();
                 $serie //->setType("line")
                     ->setUnit($unit)
@@ -154,9 +155,11 @@ class ChartService
                     ->setColor('#2dd36f')
                     ->setPointPadding($pointPadding)
                     ->setPointPlacement($pointPlacement)
-                    ->setYAxis(0);
+                    ->setYAxis(0);  
 
-                $data = array_values($recordSets[$unit->getId()][$setID]);
+                $serieData = $recordSets[$unit->getId()][$setID];
+
+                $data = is_array($serieData) ? array_values($recordSets[$unit->getId()][$setID]) : [];
                 $serie->setData(array_values($data));
 
                 // Add serie
