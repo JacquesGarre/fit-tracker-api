@@ -157,7 +157,9 @@ class ChartService
                     ->setPointPlacement($pointPlacement)
                     ->setYAxis(0);  
 
-                $serieData = $recordSets[$unit->getId()][$setID];
+                $serieData = array_key_exists($unit->getId(), $recordSets) && array_key_exists($setID, $recordSets[$unit->getId()]) 
+                    ? $recordSets[$unit->getId()][$setID]
+                    : [];
 
                 $data = is_array($serieData) ? array_values($recordSets[$unit->getId()][$setID]) : [];
                 $serie->setData(array_values($data));
