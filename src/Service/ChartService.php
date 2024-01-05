@@ -161,7 +161,7 @@ class ChartService
                     ? $recordSets[$unit->getId()][$setID]
                     : [];
 
-                $data = is_array($serieData) ? array_values($recordSets[$unit->getId()][$setID]) : [];
+                $data = is_array($serieData) && !empty($serieData) ? array_values($serieData) : [];
                 $serie->setData(array_values($data));
 
                 // Add serie
