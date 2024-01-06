@@ -16,8 +16,8 @@ class ProgramEventListener
         }
         $entityManager = $args->getObjectManager();
 
-
         if($entity->isSoftDeleted()){
+
             $workoutsToDelete = $entityManager->getRepository(Workout::class)->findBy([
                 'program' => $entity,
                 'status' => 'planned',
@@ -26,6 +26,8 @@ class ProgramEventListener
                 $entityManager->remove($workout);
                 $entityManager->flush();
             }
+
         }
+
     }
 }

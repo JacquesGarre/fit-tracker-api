@@ -55,3 +55,16 @@ services:
                 event: 'postUpdate'
                 priority: 500
                 connection: 'default'
+
+    FitTrackerApi\EventListener\ProgramExerciseEventListener:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'postPersist'
+                priority: 500
+                connection: 'default'
+            -
+                name: 'doctrine.event_listener'
+                event: 'postRemove'
+                priority: 500
+                connection: 'default'

@@ -42,7 +42,12 @@ class Workout
     #[Groups('workout')]
     private ?\DateTimeImmutable $endedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'workout', targetEntity: WorkoutExercise::class, orphanRemoval: true)]
+    #[ORM\OneToMany(
+        mappedBy: 'workout', 
+        targetEntity: WorkoutExercise::class, 
+        orphanRemoval: true,
+        cascade: ['persist']
+    )]
     #[Groups('workout')]
     private Collection $workoutExercises;
 
@@ -122,6 +127,12 @@ class Workout
 
     public function addWorkoutExercise(WorkoutExercise $workoutExercise): static
     {
+        foreach($this->workoutExercises as $exercise){
+            if($exercise->getExercise()->getId() == $workoutExercise->getExercise()->getId()){
+                return $this;
+            }
+        }
+
         if (!$this->workoutExercises->contains($workoutExercise)) {
             $this->workoutExercises->add($workoutExercise);
             $workoutExercise->setWorkout($this);
@@ -132,6 +143,15 @@ class Workout
 
     public function removeWorkoutExercise(WorkoutExercise $workoutExercise): static
     {
+        foreach($this->workoutExercises as $exercise){
+            if($exercise->getExercise()->getId() == $workoutExercise->getExercise()->getId()){
+                $this->workoutExercises->removeElement($exercise);
+                if ($exercise->getWorkout() === $this) {
+                    $exercise->setWorkout(null);
+                }
+            }
+        }
+        
         if ($this->workoutExercises->removeElement($workoutExercise)) {
             // set the owning side to null (unless already changed)
             if ($workoutExercise->getWorkout() === $this) {
